@@ -116,6 +116,13 @@ a {
   font-weight: 600;
 }
 
+.link-note {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
 .pill {
   display: inline-flex;
   align-items: center;
