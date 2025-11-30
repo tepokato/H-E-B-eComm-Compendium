@@ -1,6 +1,7 @@
 const centralTimeEl = document.getElementById("central-time");
 const mountainTimeEl = document.getElementById("mountain-time");
 const currentDateEl = document.getElementById("current-date");
+const backToTopButton = document.getElementById("back-to-top");
 
 const timeOptions = { hour: "numeric", minute: "2-digit", hour12: true };
 const dateOptions = { month: "2-digit", day: "2-digit", year: "numeric" };
@@ -23,3 +24,21 @@ function updateClocks() {
 
 updateClocks();
 setInterval(updateClocks, 30000);
+
+function toggleBackToTop() {
+  if (!backToTopButton) return;
+  if (window.scrollY > 240) {
+    backToTopButton.classList.add("visible");
+  } else {
+    backToTopButton.classList.remove("visible");
+  }
+}
+
+if (backToTopButton) {
+  backToTopButton.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+window.addEventListener("scroll", toggleBackToTop);
+toggleBackToTop();
