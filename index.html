@@ -123,6 +123,38 @@
       gap: 12px;
     }
 
+    .time-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .time-chip {
+      background: #f3f4f6;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .time-chip span {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .tool-image {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-top: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    }
+
     footer {
       padding: 20px 22px 28px;
       text-align: center;
@@ -171,6 +203,72 @@
         <li><a href="https://df.heb.com/login" target="_blank" rel="noopener">FAST</a></li>
         <li><a href="https://fleet.favordelivery.com/" target="_blank" rel="noopener">Favor portal</a></li>
       </ul>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Military time quick chart</h2>
+        <p>30-minute progression to translate standard to military time at a glance.</p>
+        <div class="time-grid">
+          <div class="time-chip"><span>12:00 AM</span><span>00:00</span></div>
+          <div class="time-chip"><span>12:30 AM</span><span>00:30</span></div>
+          <div class="time-chip"><span>1:00 AM</span><span>01:00</span></div>
+          <div class="time-chip"><span>1:30 AM</span><span>01:30</span></div>
+          <div class="time-chip"><span>2:00 AM</span><span>02:00</span></div>
+          <div class="time-chip"><span>2:30 AM</span><span>02:30</span></div>
+          <div class="time-chip"><span>3:00 AM</span><span>03:00</span></div>
+          <div class="time-chip"><span>3:30 AM</span><span>03:30</span></div>
+          <div class="time-chip"><span>4:00 AM</span><span>04:00</span></div>
+          <div class="time-chip"><span>4:30 AM</span><span>04:30</span></div>
+          <div class="time-chip"><span>5:00 AM</span><span>05:00</span></div>
+          <div class="time-chip"><span>5:30 AM</span><span>05:30</span></div>
+          <div class="time-chip"><span>6:00 AM</span><span>06:00</span></div>
+          <div class="time-chip"><span>6:30 AM</span><span>06:30</span></div>
+          <div class="time-chip"><span>7:00 AM</span><span>07:00</span></div>
+          <div class="time-chip"><span>7:30 AM</span><span>07:30</span></div>
+          <div class="time-chip"><span>8:00 AM</span><span>08:00</span></div>
+          <div class="time-chip"><span>8:30 AM</span><span>08:30</span></div>
+          <div class="time-chip"><span>9:00 AM</span><span>09:00</span></div>
+          <div class="time-chip"><span>9:30 AM</span><span>09:30</span></div>
+          <div class="time-chip"><span>10:00 AM</span><span>10:00</span></div>
+          <div class="time-chip"><span>10:30 AM</span><span>10:30</span></div>
+          <div class="time-chip"><span>11:00 AM</span><span>11:00</span></div>
+          <div class="time-chip"><span>11:30 AM</span><span>11:30</span></div>
+          <div class="time-chip"><span>12:00 PM</span><span>12:00</span></div>
+          <div class="time-chip"><span>12:30 PM</span><span>12:30</span></div>
+          <div class="time-chip"><span>1:00 PM</span><span>13:00</span></div>
+          <div class="time-chip"><span>1:30 PM</span><span>13:30</span></div>
+          <div class="time-chip"><span>2:00 PM</span><span>14:00</span></div>
+          <div class="time-chip"><span>2:30 PM</span><span>14:30</span></div>
+          <div class="time-chip"><span>3:00 PM</span><span>15:00</span></div>
+          <div class="time-chip"><span>3:30 PM</span><span>15:30</span></div>
+          <div class="time-chip"><span>4:00 PM</span><span>16:00</span></div>
+          <div class="time-chip"><span>4:30 PM</span><span>16:30</span></div>
+          <div class="time-chip"><span>5:00 PM</span><span>17:00</span></div>
+          <div class="time-chip"><span>5:30 PM</span><span>17:30</span></div>
+          <div class="time-chip"><span>6:00 PM</span><span>18:00</span></div>
+          <div class="time-chip"><span>6:30 PM</span><span>18:30</span></div>
+          <div class="time-chip"><span>7:00 PM</span><span>19:00</span></div>
+          <div class="time-chip"><span>7:30 PM</span><span>19:30</span></div>
+          <div class="time-chip"><span>8:00 PM</span><span>20:00</span></div>
+          <div class="time-chip"><span>8:30 PM</span><span>20:30</span></div>
+          <div class="time-chip"><span>9:00 PM</span><span>21:00</span></div>
+          <div class="time-chip"><span>9:30 PM</span><span>21:30</span></div>
+          <div class="time-chip"><span>10:00 PM</span><span>22:00</span></div>
+          <div class="time-chip"><span>10:30 PM</span><span>22:30</span></div>
+          <div class="time-chip"><span>11:00 PM</span><span>23:00</span></div>
+          <div class="time-chip"><span>11:30 PM</span><span>23:30</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>DC transaction ID helper</h2>
+        <p>Use this reference to locate the correct transaction ID for digital coupon cases.</p>
+        <img src="DC-transaction-ID.png" alt="DC transaction ID example" class="tool-image" />
+        <p>
+          Save a copy: <a href="DC-transaction-ID.png" download>Download PNG</a>
+        </p>
+      </article>
     </section>
 
     <section class="grid">
