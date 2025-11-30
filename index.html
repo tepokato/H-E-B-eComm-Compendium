@@ -155,6 +155,28 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
     }
 
+    .header-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .header-info .time-chip {
+      margin: 0;
+      background: #f3f4f6;
+      border: 1px solid var(--border);
+    }
+
+    .date-tag {
+      background: #eef2ff;
+      color: #312e81;
+      border: 1px solid #e0e7ff;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
     footer {
       padding: 20px 22px 28px;
       text-align: center;
@@ -176,7 +198,11 @@
       <span>H‑E‑B</span>
       <div>eComm Compendium</div>
     </div>
-    <div style="color: var(--muted); font-weight: 600;">Single source of information for eComm partners.</div>
+    <div class="header-info">
+      <div class="time-chip"><span>Central</span><span id="central-time">--</span></div>
+      <div class="time-chip"><span>Mountain</span><span id="mountain-time">--</span></div>
+      <div class="date-tag">Today: <span id="current-date">--/--/----</span></div>
+    </div>
   </header>
 
   <main>
@@ -310,6 +336,34 @@
       </article>
     </section>
   </main>
+
+  <script>
+    const centralTimeEl = document.getElementById("central-time");
+    const mountainTimeEl = document.getElementById("mountain-time");
+    const currentDateEl = document.getElementById("current-date");
+
+    const timeOptions = { hour: "numeric", minute: "2-digit", hour12: true };
+    const dateOptions = { month: "2-digit", day: "2-digit", year: "numeric" };
+
+    function updateClocks() {
+      const now = new Date();
+      centralTimeEl.textContent = new Intl.DateTimeFormat("en-US", {
+        ...timeOptions,
+        timeZone: "America/Chicago",
+      }).format(now);
+      mountainTimeEl.textContent = new Intl.DateTimeFormat("en-US", {
+        ...timeOptions,
+        timeZone: "America/Denver",
+      }).format(now);
+      currentDateEl.textContent = new Intl.DateTimeFormat("en-US", {
+        ...dateOptions,
+        timeZone: "America/Chicago",
+      }).format(now);
+    }
+
+    updateClocks();
+    setInterval(updateClocks, 30000);
+  </script>
 
   <footer>
     H‑E‑B eComm Compendium — H‑E‑B and all related names and properties belong to H‑E‑B. This site is intended solely for educational purposes.
