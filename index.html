@@ -21,6 +21,23 @@
   </header>
 
   <main>
+    <section class="card quick-launch">
+      <div>
+        <div class="pill">Start of shift</div>
+        <h2>Quick-launch core systems</h2>
+        <p>Open critical tools without scrolling. Use the start button to launch them all at once.</p>
+      </div>
+      <div class="quick-launch-actions" role="group" aria-label="Quick launch core systems">
+        <button class="chip-button" data-url="https://heb.logile.com/portal/2018/main_pc.seam?cid=1293536">Logile</button>
+        <button class="chip-button" data-url="https://heb.lightning.force.com/lightning/page/home">Salesforce</button>
+        <button class="chip-button" data-url="https://comsui-new.heb.com/COMSDashboard/">COMS</button>
+        <button class="chip-button" data-url="https://csr.retail.prod.heb.com/hebtools/CSRLogin.jsp">CSR</button>
+        <button class="chip-button" data-url="https://df.heb.com/login">FAST</button>
+        <button class="chip-button" data-url="https://fleet.favordelivery.com/">Favor portal</button>
+        <button class="chip-button primary" id="launch-all" type="button">Start shift tools</button>
+      </div>
+    </section>
+
     <section class="card">
       <div class="pill">Useful info we rely on day to day</div>
       <h1>H‑E‑B eComm Compendium</h1>
@@ -116,11 +133,35 @@
       <article class="card">
         <h2>Quick contacts</h2>
         <p>Reach the right team fast.</p>
-        <ul>
-          <li>eComm's number – 1-855-803-0611</li>
-          <li>In-store accounting team – 1-800-987-4438</li>
-          <li>H-E-B credit card customer service – 888-290-2383</li>
-          <li>Favor support – <a href="mailto:support@favordelivery.com">support@favordelivery.com</a></li>
+        <ul class="contact-list">
+          <li>
+            <div>
+              <div class="contact-label">eComm's number</div>
+              <a href="tel:18558030611" class="contact-link">1-855-803-0611</a>
+            </div>
+            <button class="icon-button" data-copy="1-855-803-0611" aria-label="Copy eComm's number">Copy</button>
+          </li>
+          <li>
+            <div>
+              <div class="contact-label">In-store accounting team</div>
+              <a href="tel:18009874438" class="contact-link">1-800-987-4438</a>
+            </div>
+            <button class="icon-button" data-copy="1-800-987-4438" aria-label="Copy In-store accounting team number">Copy</button>
+          </li>
+          <li>
+            <div>
+              <div class="contact-label">H-E-B credit card customer service</div>
+              <a href="tel:18882902383" class="contact-link">888-290-2383</a>
+            </div>
+            <button class="icon-button" data-copy="888-290-2383" aria-label="Copy H-E-B credit card customer service number">Copy</button>
+          </li>
+          <li>
+            <div>
+              <div class="contact-label">Favor support</div>
+              <a href="mailto:support@favordelivery.com" class="contact-link">support@favordelivery.com</a>
+            </div>
+            <button class="icon-button" data-copy="support@favordelivery.com" aria-label="Copy Favor support email">Copy</button>
+          </li>
         </ul>
       </article>
     </section>

@@ -2,6 +2,9 @@ const centralTimeEl = document.getElementById("central-time");
 const mountainTimeEl = document.getElementById("mountain-time");
 const currentDateEl = document.getElementById("current-date");
 const backToTopButton = document.getElementById("back-to-top");
+const quickLaunchButtons = document.querySelectorAll(".chip-button[data-url]");
+const launchAllButton = document.getElementById("launch-all");
+const copyButtons = document.querySelectorAll(".icon-button[data-copy]");
 
 const timeOptions = { hour: "numeric", minute: "2-digit", hour12: true };
 const dateOptions = { month: "2-digit", day: "2-digit", year: "numeric" };
@@ -27,7 +30,7 @@ setInterval(updateClocks, 30000);
 
 function toggleBackToTop() {
   if (!backToTopButton) return;
-  if (window.scrollY > 240) {
+  if (window.scrollY > 120) {
     backToTopButton.classList.add("visible");
   } else {
     backToTopButton.classList.remove("visible");
@@ -42,3 +45,44 @@ if (backToTopButton) {
 
 window.addEventListener("scroll", toggleBackToTop);
 toggleBackToTop();
+
+quickLaunchButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const url = button.getAttribute("data-url");
+    if (url) {
+      window.open(url, "_blank", "noopener");
+    }
+  });
+});
+
+if (launchAllButton) {
+  launchAllButton.addEventListener("click", () => {
+    quickLaunchButtons.forEach((button) => {
+      const url = button.getAttribute("data-url");
+      if (url) {
+        window.open(url, "_blank", "noopener");
+      }
+    });
+  });
+}
+
+copyButtons.forEach((button) => {
+  button.addEventListener("click", async () => {
+    const text = button.getAttribute("data-copy");
+    if (!text) return;
+
+    try {
+      await navigator.clipboard.writeText(text);
+      button.textContent = "Copied";
+      setTimeout(() => {
+        button.textContent = "Copy";
+      }, 1200);
+    } catch (error) {
+      console.error("Copy failed", error);
+      button.textContent = "Copy failed";
+      setTimeout(() => {
+        button.textContent = "Copy";
+      }, 1200);
+    }
+  });
+});
