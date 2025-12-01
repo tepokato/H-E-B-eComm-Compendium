@@ -194,6 +194,7 @@ a {
 .time-chip span {
   color: var(--muted);
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .time-grid .time-chip {
