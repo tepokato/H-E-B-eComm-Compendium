@@ -50,12 +50,31 @@ header {
 }
 
 main {
-  max-width: 1080px;
+  max-width: 1220px;
   margin: 0 auto;
   padding: 22px;
   display: flex;
   flex-direction: column;
   gap: 18px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.content-grid .column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hero-card {
+  position: sticky;
+  top: 82px;
+  z-index: 0;
 }
 
 .quick-launch {
@@ -357,6 +376,16 @@ footer {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+@media (max-width: 1100px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card {
+    position: static;
+  }
 }
 
 @media (max-width: 720px) {
