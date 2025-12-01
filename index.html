@@ -14,9 +14,15 @@
       <div>eComm Compendium</div>
     </div>
     <div class="header-info">
-      <div class="time-chip"><span>Central&nbsp;(GMT-6):&nbsp;</span><span id="central-time">--</span></div>
-      <div class="time-chip"><span>Military:&nbsp;</span><span id="central-military-time">--</span></div>
-      <div class="date-tag">Today: <span id="current-date">--/--/----</span></div>
+      <div class="time-chip time-chip--combined" id="central-combined-time" aria-live="polite">
+        <span class="time-chip__zone">Central GMT-6</span>
+        <span class="time-chip__separator" aria-hidden="true">•</span>
+        <span id="combined-standard-time">--:--pm</span>
+        <span class="time-chip__separator" aria-hidden="true">•</span>
+        <span id="combined-military-time">----</span>
+        <span class="time-chip__separator" aria-hidden="true">•</span>
+        <span id="combined-date">--/--/----</span>
+      </div>
     </div>
   </header>
 

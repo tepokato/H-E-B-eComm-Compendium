@@ -242,6 +242,23 @@ a {
   border: 1px solid var(--border);
 }
 
+.time-chip--combined {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.time-chip--combined span {
+  color: var(--text);
+}
+
+.time-chip__separator {
+  color: var(--muted);
+  font-weight: 800;
+}
+
 .chip-button {
   border: 1px solid var(--border);
   background: #f9fafb;
