@@ -1,5 +1,5 @@
 const centralTimeEl = document.getElementById("central-time");
-const mountainTimeEl = document.getElementById("mountain-time");
+const centralMilitaryTimeEl = document.getElementById("central-military-time");
 const currentDateEl = document.getElementById("current-date");
 const backToTopButton = document.getElementById("back-to-top");
 const quickLaunchButtons = document.querySelectorAll(".chip-button[data-url]");
@@ -7,6 +7,7 @@ const launchAllButton = document.getElementById("launch-all");
 const copyButtons = document.querySelectorAll(".icon-button[data-copy]");
 
 const timeOptions = { hour: "numeric", minute: "2-digit", hour12: true };
+const militaryTimeOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
 const dateOptions = { month: "2-digit", day: "2-digit", year: "numeric" };
 
 function updateClocks() {
@@ -15,9 +16,9 @@ function updateClocks() {
     ...timeOptions,
     timeZone: "America/Chicago",
   }).format(now);
-  mountainTimeEl.textContent = new Intl.DateTimeFormat("en-US", {
-    ...timeOptions,
-    timeZone: "America/Denver",
+  centralMilitaryTimeEl.textContent = new Intl.DateTimeFormat("en-US", {
+    ...militaryTimeOptions,
+    timeZone: "America/Chicago",
   }).format(now);
   currentDateEl.textContent = new Intl.DateTimeFormat("en-US", {
     ...dateOptions,
