@@ -177,6 +177,27 @@ a {
   font-weight: 700;
 }
 
+.time-grid .time-chip {
+  background: #f9fafb;
+  border: 1.5px solid #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.time-grid .time-chip span:first-child {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.time-grid .time-chip span:first-child::after {
+  content: "→";
+  color: var(--heb-red);
+  font-weight: 800;
+  margin: 0 8px;
+}
+
 .tool-image {
   width: 100%;
   border: 1px solid var(--border);
