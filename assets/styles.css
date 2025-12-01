@@ -220,9 +220,12 @@ a {
 
 .tool-image {
   width: 100%;
+  max-width: 520px;
+  height: auto;
+  display: block;
+  margin: 12px auto 0;
   border: 1px solid var(--border);
   border-radius: 12px;
-  margin-top: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
 }
 
