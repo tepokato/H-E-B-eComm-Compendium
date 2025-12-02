@@ -442,6 +442,13 @@ footer {
   background: #f9fafb;
 }
 
+.contact-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .contact-label {
   font-weight: 700;
   color: var(--text);
