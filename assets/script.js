@@ -5,6 +5,7 @@ const backToTopButton = document.getElementById("back-to-top");
 const quickLaunchButtons = document.querySelectorAll(".chip-button[data-url]");
 const launchAllButton = document.getElementById("launch-all");
 const copyButtons = document.querySelectorAll(".icon-button[data-copy]");
+const navLinks = document.querySelectorAll(".section-nav a[href^='#']");
 
 const timeOptions = { hour: "numeric", minute: "2-digit", hour12: true };
 const militaryTimeOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
@@ -85,5 +86,16 @@ copyButtons.forEach((button) => {
         button.textContent = "Copy";
       }, 1200);
     }
+  });
+});
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const hash = link.getAttribute("href");
+    if (!hash) return;
+    const target = document.querySelector(hash);
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
