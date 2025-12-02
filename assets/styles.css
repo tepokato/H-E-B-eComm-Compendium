@@ -174,30 +174,6 @@ main {
   box-shadow: none;
 }
 
-.quick-launch {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.quick-launch-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.launch-all-row {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.launch-all-note {
-  color: var(--muted);
-  font-weight: 600;
-}
-
 .card {
   background: var(--card);
   border: 1px solid var(--border);
