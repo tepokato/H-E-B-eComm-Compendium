@@ -350,6 +350,24 @@ a {
   border: 1px solid var(--border);
 }
 
+.condensed-time {
+  gap: 8px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+}
+
+.condensed-time .chip-label,
+.condensed-time .chip-divider {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.condensed-time .chip-value {
+  color: var(--text);
+  font-weight: 800;
+}
+
 .chip-button {
   border: 1px solid var(--border);
   background: #f9fafb;
