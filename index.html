@@ -20,11 +20,21 @@
     </div>
   </header>
 
+  <nav class="section-nav" aria-label="Page navigation">
+    <a href="#daily-checklist">Checklist</a>
+    <a href="#quick-launch">Quick launch</a>
+    <a href="#operations">Ops</a>
+    <a href="#partners">Partners</a>
+    <a href="#support">Support</a>
+    <a href="#pro-tips">Pro tips</a>
+  </nav>
+
   <main>
-    <section class="card hero-card">
+    <section id="daily-checklist" class="card hero-card">
+      <div class="pill">Start of shift</div>
       <h2 class="card-title">Daily checklist for curbside/delivery/3PSD partners</h2>
       <p>Start each shift with these tools ready:</p>
-      <ul>
+      <ul class="stacked-list">
         <li>
           Re-authenticate Zscaler app on your PC.
           <img src="assets/ZS.png" alt="Zscaler logo" class="inline-logo" />
@@ -34,164 +44,258 @@
         <li><a href="https://comsui-new.heb.com/COMSDashboard/" target="_blank" rel="noopener">COMS</a></li>
         <li><a href="https://csr.retail.prod.heb.com/hebtools/CSRLogin.jsp" target="_blank" rel="noopener">CSR</a></li>
         <li><a href="https://df.heb.com/login" target="_blank" rel="noopener">FAST</a></li>
-        <li><a href="https://fleet.favordelivery.com/" target="_blank" rel="noopener">Favor portal</a><br /></li>
+        <li><a href="https://fleet.favordelivery.com/" target="_blank" rel="noopener">Favor portal</a></li>
         <li><a href="https://www.doordash.com/merchant/accounts?business_id=13030695" target="_blank" rel="noopener">DoorDash portal</a></li>
         <li><a href="https://logix.heb.com/logix/login.aspx?mode=invalid&bounceback=https%3a%2f%2flogix.heb.com%2flogix%2fstatus.aspx" target="_blank" rel="noopener">Logix (DC)</a></li>
         <li><a href="https://sms.heb.com/salt/rag/#/reports/users/activity" target="_blank" rel="noopener">SALT</a></li>
       </ul>
     </section>
 
-    <div class="content-grid">
-      <div class="column">
-        <article class="card">
-          <h2 class="card-title">Military time quick chart</h2>
-          <p>Progression to translate standard to military time at a glance.</p>
-          <div class="time-grid">
-            <div class="time-chip"><span>12:00 PM</span><span>1200</span></div>
-            <div class="time-chip"><span>1:00 PM</span><span>1300</span></div>
-            <div class="time-chip"><span>2:00 PM</span><span>1400</span></div>
-            <div class="time-chip"><span>3:00 PM</span><span>1500</span></div>
-            <div class="time-chip"><span>4:00 PM</span><span>1600</span></div>
-            <div class="time-chip"><span>5:00 PM</span><span>1700</span></div>
-            <div class="time-chip"><span>6:00 PM</span><span>1800</span></div>
-            <div class="time-chip"><span>7:00 PM</span><span>1900</span></div>
-            <div class="time-chip"><span>8:00 PM</span><span>2000</span></div>
-            <div class="time-chip"><span>9:00 PM</span><span>2100</span></div>
-            <div class="time-chip"><span>10:00 PM</span><span>2200</span></div>
-            <div class="time-chip"><span>11:00 PM</span><span>2300</span></div>
-          </div>
-        </article>
-
-        <article class="card">
-          <h2 class="card-title">Digital coupons</h2>
-          <p>Check guest savings before finalizing orders.</p>
-          <ul>
-            <li><a href="https://logix.heb.com/logix/login.aspx" target="_blank" rel="noopener">Logix</a></li>
-            <li><a href="https://csr.retail.prod.heb.com/digital-coupon/coupon-selection" target="_blank" rel="noopener">See customer's digital coupons</a></li>
-            <li>
-              <a href="https://insights.heb.com/#/views/DigitalCouponCallCenterReport_QA/DigitalCouponCallCenter?:iid=1&:original_view=y" target="_blank" rel="noopener">Digital coupon call center report (BI)</a>
-              <div class="link-note">
-                If you don't have access to this site, call level 2 and they will be able to retrieve it for you.
-              </div>
-            </li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h2 class="card-title">Store reminders</h2>
-          <p>Locations that do not hold orders overnight:</p>
-          <ul>
-            <li>Granbury – 631</li>
-            <li>Corsicana – 238</li>
-            <li>Waxahachie (holds 4 hours) – 426</li>
-            <li>Kennedy (closes 7 pm nightly) – 693</li>
-          </ul>
-        </article>
+    <section id="quick-launch" class="card quick-launch-card">
+      <div class="section-label">Jump to your most-used tools</div>
+      <div class="quick-launch-actions">
+        <button class="chip-button primary" data-url="https://heb.logile.com/portal/2018/main_pc.seam?cid=1293536">Logile</button>
+        <button class="chip-button" data-url="https://comsui-new.heb.com/COMSDashboard/">COMS</button>
+        <button class="chip-button" data-url="https://csr.retail.prod.heb.com/hebtools/CSRLogin.jsp">CSR</button>
+        <button class="chip-button" data-url="https://heb.lightning.force.com/lightning/page/home">Salesforce</button>
+        <button class="chip-button" data-url="https://df.heb.com/login">FAST</button>
+        <button class="chip-button" data-url="https://logix.heb.com/logix/login.aspx?mode=invalid&bounceback=https%3a%2f%2flogix.heb.com%2flogix%2fstatus.aspx">Logix (DC)</button>
+        <button class="chip-button" data-url="https://fleet.favordelivery.com/">Favor</button>
+        <button class="chip-button" data-url="https://www.doordash.com/merchant/accounts?business_id=13030695">DoorDash</button>
       </div>
-
-      <div class="column">
-        <article class="card">
-          <h2 class="card-title">DC transaction ID helper</h2>
-          <p>Use this reference to locate the correct transaction ID for digital coupon cases.</p>
-          <img src="assets/DC-transaction-ID.png" alt="DC transaction ID example" class="tool-image" />
-          <p>
-            Save a copy: <a href="assets/DC-transaction-ID.png" download>Download PNG</a>
-          </p>
-        </article>
-
-        <article class="card">
-          <h2 class="card-title">3PSD partners</h2>
-          <p>Key links for DoorDash and Favor support.</p>
-          <ul>
-            <li>
-              <a href="https://favordelivery.typeform.com/to/FI8KCiQg?typeform-source=heb.lightning.force.com" target="_blank" rel="noopener">Favor Feedback Form</a><br />
-              <span style="color: var(--muted); font-weight: 600;">Remember that when the form asks you to input "YOUR HEB Email address" you are always going to input this address "ml.ecommsupervisors@heb.com"</span>
-            </li>
-            <li><a href="https://forms.office.com/pages/responsepage.aspx?id=MTbcnncWfUuMydzraGXLAcvZPBosVPpNpUIup961WkpUNTRVRlVJMU82NFRJWlk1OVZXQlZaT0NYWS4u&route=shorturl" target="_blank" rel="noopener">3PSD in-store Feedback Form</a></li>
-            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSemh7P5a9j_e9YcsgRBZq5fBruGw7K7XmTFTr5c3jUUGRKKZg/viewform?pli=1&pli=1" target="_blank" rel="noopener">DD Feedback Form</a></li>
-            <li><a href="https://partnernetheb-my.sharepoint.com/:w:/g/personal/s346760_heb_com/Ebrqhi-nSVBInOj1DD2TDUQBPAcWPwm9YiFxzjq7lXr90A?wdOrigin=TEAMS-MAGLEV.p2p_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1757163133871&web=1" target="_blank" rel="noopener">3PSD Operational Guidelines</a></li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h2 class="card-title">Quick contacts</h2>
-          <p>Reach the right team fast.</p>
-          <ul class="contact-list">
-            <li>
-              <div>
-                <div class="contact-label">eComm's number</div>
-                <a href="tel:18558030611" class="contact-link">1-855-803-0611</a>
-              </div>
-              <button class="icon-button" data-copy="1-855-803-0611" aria-label="Copy eComm's number">Copy</button>
-            </li>
-            <li>
-              <div>
-                <div class="contact-label">In-store accounting team</div>
-                <a href="tel:18009874438" class="contact-link">1-800-987-4438</a>
-              </div>
-              <button class="icon-button" data-copy="1-800-987-4438" aria-label="Copy In-store accounting team number">Copy</button>
-            </li>
-            <li>
-              <div>
-                <div class="contact-label">H-E-B credit card customer service</div>
-                <a href="tel:18882902383" class="contact-link">888-290-2383</a>
-              </div>
-              <button class="icon-button" data-copy="888-290-2383" aria-label="Copy H-E-B credit card customer service number">Copy</button>
-            </li>
-            <li>
-              <div>
-                <div class="contact-label">Favor support email</div>
-                <a href="mailto:support@favordelivery.com" class="contact-link">support@favordelivery.com</a>
-              </div>
-              <button class="icon-button" data-copy="support@favordelivery.com" aria-label="Copy Favor support email">Copy</button>
-            </li>
-            <li>
-              <div>
-                <div class="contact-label">Favor Merchant Support</div>
-                <a href="tel:15126452063" class="contact-link">(512) 645-2063</a>
-              </div>
-              <button class="icon-button" data-copy="(512) 645-2063" aria-label="Copy Favor Merchant Support number">Copy</button>
-            </li>
-            <li>
-              <div>
-                <div class="contact-label">DoorDash Merchant Support</div>
-                <a href="tel:18552228111" class="contact-link">(855) 222-8111</a>
-              </div>
-              <button class="icon-button" data-copy="(855) 222-8111" aria-label="Copy DoorDash Merchant Support number">Copy</button>
-            </li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h2 class="card-title">Account recovery tools</h2>
-          <p>Keep this handy for rare sign-in or verification issues.</p>
-          <ul>
-            <li>
-              <a href="https://recovery.heb.com" target="_blank" rel="noopener">Nametag (Okta self-service reset)</a>
-              <div class="link-note">
-                Partners can reset Okta verification on their own when standard login is blocked—use when a Service Desk call
-                isn't needed.
-              </div>
-            </li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h2 class="card-title">DC credit reminders</h2>
-          <ol>
-            <li>Issue in-store credit, not a refund.</li>
-            <li>Redeemable only in-store; not curbside or delivery.</li>
-            <li>Credit will not appear in the account or trigger messages.</li>
-            <li>Receipt shows it as "Store Value."</li>
-            <li>Expires in 21 days at the exact issue time.</li>
-            <li>Wait 24 hours before using the credit.</li>
-            <li>Redeem with a cashier (not self-checkout or scan-and-go).</li>
-          </ol>
-        </article>
+      <div class="launch-all-row">
+        <button id="launch-all" class="chip-button">Launch all in new tabs</button>
+        <span class="launch-all-note">Opens each quick link in a separate tab.</span>
       </div>
-    </div>
+    </section>
 
-    <section class="card pro-tips-card">
+    <section id="operations" class="section-block">
+      <div class="section-header">
+        <div class="section-pill">Operations</div>
+        <div class="section-heading">
+          <h2>Shift resources</h2>
+          <p>Tools and references that help you move fast during your shift.</p>
+        </div>
+      </div>
+      <div class="content-grid">
+        <div class="column">
+          <article class="card">
+            <h2 class="card-title">Military time quick chart</h2>
+            <p>Progression to translate standard to military time at a glance.</p>
+            <div class="time-grid">
+              <div class="time-chip"><span>12:00 PM</span><span>1200</span></div>
+              <div class="time-chip"><span>1:00 PM</span><span>1300</span></div>
+              <div class="time-chip"><span>2:00 PM</span><span>1400</span></div>
+              <div class="time-chip"><span>3:00 PM</span><span>1500</span></div>
+              <div class="time-chip"><span>4:00 PM</span><span>1600</span></div>
+              <div class="time-chip"><span>5:00 PM</span><span>1700</span></div>
+              <div class="time-chip"><span>6:00 PM</span><span>1800</span></div>
+              <div class="time-chip"><span>7:00 PM</span><span>1900</span></div>
+              <div class="time-chip"><span>8:00 PM</span><span>2000</span></div>
+              <div class="time-chip"><span>9:00 PM</span><span>2100</span></div>
+              <div class="time-chip"><span>10:00 PM</span><span>2200</span></div>
+              <div class="time-chip"><span>11:00 PM</span><span>2300</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <h2 class="card-title">Digital coupons</h2>
+            <p>Check guest savings before finalizing orders.</p>
+            <ul>
+              <li><a href="https://logix.heb.com/logix/login.aspx" target="_blank" rel="noopener">Logix</a></li>
+              <li><a href="https://csr.retail.prod.heb.com/digital-coupon/coupon-selection" target="_blank" rel="noopener">See customer's digital coupons</a></li>
+              <li>
+                <a href="https://insights.heb.com/#/views/DigitalCouponCallCenterReport_QA/DigitalCouponCallCenter?:iid=1&:original_view=y" target="_blank" rel="noopener">Digital coupon call center report (BI)</a>
+                <div class="link-note">
+                  If you don't have access to this site, call level 2 and they will be able to retrieve it for you.
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h2 class="card-title">Store reminders</h2>
+            <p>Locations that do not hold orders overnight:</p>
+            <ul>
+              <li>Granbury – 631</li>
+              <li>Corsicana – 238</li>
+              <li>Waxahachie (holds 4 hours) – 426</li>
+              <li>Kennedy (closes 7 pm nightly) – 693</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="column">
+          <article class="card">
+            <h2 class="card-title">DC transaction ID helper</h2>
+            <p>Use this reference to locate the correct transaction ID for digital coupon cases.</p>
+            <img src="assets/DC-transaction-ID.png" alt="DC transaction ID example" class="tool-image" />
+            <p>
+              Save a copy: <a href="assets/DC-transaction-ID.png" download>Download PNG</a>
+            </p>
+          </article>
+
+          <article class="card">
+            <h2 class="card-title">DC credit reminders</h2>
+            <ol>
+              <li>Issue in-store credit, not a refund.</li>
+              <li>Redeemable only in-store; not curbside or delivery.</li>
+              <li>Credit will not appear in the account or trigger messages.</li>
+              <li>Receipt shows it as "Store Value."</li>
+              <li>Expires in 21 days at the exact issue time.</li>
+              <li>Wait 24 hours before using the credit.</li>
+              <li>Redeem with a cashier (not self-checkout or scan-and-go).</li>
+            </ol>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="partners" class="section-block">
+      <div class="section-header">
+        <div class="section-pill partners">Partners</div>
+        <div class="section-heading">
+          <h2>3PSD partner tools</h2>
+          <p>Keep partner-specific support and feedback forms together.</p>
+        </div>
+      </div>
+      <div class="content-grid">
+        <div class="column">
+          <article class="card">
+            <h2 class="card-title">3PSD partners</h2>
+            <p>Key links for DoorDash and Favor support.</p>
+            <ul>
+              <li>
+                <a href="https://favordelivery.typeform.com/to/FI8KCiQg?typeform-source=heb.lightning.force.com" target="_blank" rel="noopener">Favor Feedback Form</a><br />
+                <span style="color: var(--muted); font-weight: 600;">Remember that when the form asks you to input "YOUR HEB Email address" you are always going to input this address "ml.ecommsupervisors@heb.com"</span>
+              </li>
+              <li><a href="https://forms.office.com/pages/responsepage.aspx?id=MTbcnncWfUuMydzraGXLAcvZPBosVPpNpUIup961WkpUNTRVRlVJMU82NFRJWlk1OVZXQlZaT0NYWS4u&route=shorturl" target="_blank" rel="noopener">3PSD in-store Feedback Form</a></li>
+              <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSemh7P5a9j_e9YcsgRBZq5fBruGw7K7XmTFTr5c3jUUGRKKZg/viewform?pli=1&pli=1" target="_blank" rel="noopener">DD Feedback Form</a></li>
+              <li><a href="https://partnernetheb-my.sharepoint.com/:w:/g/personal/s346760_heb_com/Ebrqhi-nSVBInOj1DD2TDUQBPAcWPwm9YiFxzjq7lXr90A?wdOrigin=TEAMS-MAGLEV.p2p_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1757163133871&web=1" target="_blank" rel="noopener">3PSD Operational Guidelines</a></li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="column">
+          <article class="card info-card">
+            <h2 class="card-title">At-a-glance reminders</h2>
+            <ul class="stacked-list">
+              <li>Keep partner login credentials handy for quick resets.</li>
+              <li>Favor and DoorDash forms route faster when you include order numbers and contact details.</li>
+              <li>Bookmark the Operational Guidelines for new team members.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="support" class="section-block">
+      <div class="section-header">
+        <div class="section-pill support">Support</div>
+        <div class="section-heading">
+          <h2>Support & account recovery</h2>
+          <p>Keep critical contacts close and trimmed down with accordions.</p>
+        </div>
+      </div>
+      <div class="content-grid">
+        <div class="column">
+          <article class="card">
+            <h2 class="card-title">Quick contacts</h2>
+            <div class="accordion-list">
+              <details class="accordion" open>
+                <summary>
+                  <div>
+                    <div class="contact-label">eComm's number</div>
+                    <div class="contact-link">1-855-803-0611</div>
+                  </div>
+                </summary>
+                <div class="accordion-body">
+                  <button class="icon-button" data-copy="1-855-803-0611" aria-label="Copy eComm's number">Copy</button>
+                  <a href="tel:18558030611" class="chip-button">Call</a>
+                </div>
+              </details>
+              <details class="accordion">
+                <summary>
+                  <div>
+                    <div class="contact-label">In-store accounting team</div>
+                    <div class="contact-link">1-800-987-4438</div>
+                  </div>
+                </summary>
+                <div class="accordion-body">
+                  <button class="icon-button" data-copy="1-800-987-4438" aria-label="Copy In-store accounting team number">Copy</button>
+                  <a href="tel:18009874438" class="chip-button">Call</a>
+                </div>
+              </details>
+              <details class="accordion">
+                <summary>
+                  <div>
+                    <div class="contact-label">H-E-B credit card customer service</div>
+                    <div class="contact-link">888-290-2383</div>
+                  </div>
+                </summary>
+                <div class="accordion-body">
+                  <button class="icon-button" data-copy="888-290-2383" aria-label="Copy H-E-B credit card customer service number">Copy</button>
+                  <a href="tel:18882902383" class="chip-button">Call</a>
+                </div>
+              </details>
+              <details class="accordion">
+                <summary>
+                  <div>
+                    <div class="contact-label">Favor support email</div>
+                    <div class="contact-link">support@favordelivery.com</div>
+                  </div>
+                </summary>
+                <div class="accordion-body">
+                  <button class="icon-button" data-copy="support@favordelivery.com" aria-label="Copy Favor support email">Copy</button>
+                  <a href="mailto:support@favordelivery.com" class="chip-button">Email</a>
+                </div>
+              </details>
+              <details class="accordion">
+                <summary>
+                  <div>
+                    <div class="contact-label">Favor Merchant Support</div>
+                    <div class="contact-link">(512) 645-2063</div>
+                  </div>
+                </summary>
+                <div class="accordion-body">
+                  <button class="icon-button" data-copy="(512) 645-2063" aria-label="Copy Favor Merchant Support number">Copy</button>
+                  <a href="tel:15126452063" class="chip-button">Call</a>
+                </div>
+              </details>
+              <details class="accordion">
+                <summary>
+                  <div>
+                    <div class="contact-label">DoorDash Merchant Support</div>
+                    <div class="contact-link">(855) 222-8111</div>
+                  </div>
+                </summary>
+                <div class="accordion-body">
+                  <button class="icon-button" data-copy="(855) 222-8111" aria-label="Copy DoorDash Merchant Support number">Copy</button>
+                  <a href="tel:18552228111" class="chip-button">Call</a>
+                </div>
+              </details>
+            </div>
+          </article>
+        </div>
+
+        <div class="column">
+          <article class="card">
+            <h2 class="card-title">Account recovery tools</h2>
+            <p>Keep this handy for rare sign-in or verification issues.</p>
+            <ul>
+              <li>
+                <a href="https://recovery.heb.com" target="_blank" rel="noopener">Nametag (Okta self-service reset)</a>
+                <div class="link-note">
+                  Partners can reset Okta verification on their own when standard login is blocked—use when a Service Desk call isn't needed.
+                </div>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pro-tips" class="card pro-tips-card">
       <h2 class="card-title">Pro tips</h2>
       <div class="pro-tip-list">
         <details class="pro-tip">
