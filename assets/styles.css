@@ -663,9 +663,31 @@ footer {
   background: linear-gradient(180deg, #f8fafc, #fff);
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
+  main {
+    padding: 18px;
+    gap: 16px;
+  }
+
   .content-grid {
     grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .content-grid .column {
+    gap: 18px;
+  }
+
+  .section-block {
+    gap: 14px;
+  }
+
+  .section-header {
+    padding: 0;
+  }
+
+  .card {
+    padding: 16px;
   }
 
   .hero-card {
