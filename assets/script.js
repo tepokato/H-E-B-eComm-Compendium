@@ -7,6 +7,13 @@ const launchAllButton = document.getElementById("launch-all");
 const copyButtons = document.querySelectorAll(".icon-button[data-copy]");
 const navLinks = document.querySelectorAll(".section-nav a[href^='#']");
 const launchStatus = document.getElementById("launch-status");
+const sectionTargets = Array.from(navLinks)
+  .map((link) => {
+    const hash = link.getAttribute("href");
+    if (!hash) return null;
+    return document.querySelector(hash);
+  })
+  .filter(Boolean);
 
 const timeOptions = { hour: "numeric", minute: "2-digit", hour12: true };
 const militaryTimeOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
@@ -136,3 +143,26 @@ navLinks.forEach((link) => {
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
+
+if (sectionTargets.length && "IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        const activeLink = document.querySelector(
+          `.section-nav a[href="#${id}"]`
+        );
+        if (!activeLink) return;
+        navLinks.forEach((link) => link.classList.remove("active"));
+        activeLink.classList.add("active");
+      });
+    },
+    {
+      rootMargin: "-40% 0px -40% 0px",
+      threshold: 0.25,
+    }
+  );
+
+  sectionTargets.forEach((section) => observer.observe(section));
+}
