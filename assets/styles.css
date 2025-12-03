@@ -294,12 +294,19 @@ a {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   justify-content: flex-start;
   gap: 10px;
+  flex-wrap: wrap;
+  row-gap: 6px;
 }
 
 .time-grid .time-chip span:first-child {
   position: relative;
   display: inline-flex;
   align-items: center;
+}
+
+.time-grid .time-chip span {
+  white-space: normal;
+  min-width: 0;
 }
 
 .time-grid .time-chip span:first-child::after {
