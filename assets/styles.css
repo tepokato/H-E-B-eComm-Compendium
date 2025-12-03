@@ -113,6 +113,42 @@ main {
   gap: 14px;
 }
 
+.sticky-rail {
+  position: sticky;
+  top: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-self: flex-start;
+}
+
+.rail-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: linear-gradient(180deg, #f8fafc, #fff);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+.rail-title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.rail-description {
+  margin: 2px 0 0;
+}
+
+.section-pill.digital {
+  background: #fff1f2;
+  color: #be123c;
+  border-color: #fecdd3;
+  box-shadow: 0 6px 14px rgba(190, 18, 60, 0.12);
+}
+
 .section-block {
   background: transparent;
   border: none;
@@ -749,6 +785,15 @@ footer {
 
   .content-grid .column {
     gap: 18px;
+  }
+
+  .sticky-rail {
+    position: static;
+  }
+
+  .rail-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .section-block {
