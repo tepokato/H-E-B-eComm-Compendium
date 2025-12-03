@@ -292,16 +292,11 @@ a {
   background: #f9fafb;
   border: 1.5px solid #cbd5e1;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  justify-content: flex-start;
-  gap: 10px;
-  flex-wrap: wrap;
-  row-gap: 6px;
-}
-
-.time-grid .time-chip span:first-child {
-  position: relative;
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
+  column-gap: 10px;
+  row-gap: 6px;
 }
 
 .time-grid .time-chip span {
@@ -309,11 +304,31 @@ a {
   min-width: 0;
 }
 
-.time-grid .time-chip span:first-child::after {
-  content: "→";
+.time-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--heb-red);
   font-weight: 800;
-  margin: 0 8px;
+}
+
+.time-arrow::before {
+  content: "→";
+}
+
+@media (max-width: 640px) {
+  .time-grid .time-chip {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .time-arrow {
+    justify-self: center;
+  }
+
+  .time-arrow::before {
+    content: "↓";
+  }
 }
 
 .tool-image {
