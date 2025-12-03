@@ -70,66 +70,101 @@
           <article class="card">
             <h2 class="card-title">Military time quick chart</h2>
             <p>Progression to translate standard to military time at a glance.</p>
-            <div class="time-grid">
-              <div class="time-chip">
-                <span class="time-standard">12:00 PM</span>
-                <span class="time-arrow" aria-hidden="true"></span>
-                <span class="time-military">1200</span>
+            <div class="time-chart">
+              <div class="time-rules">
+                <div class="rule-card">
+                  <p class="rule-title">Add 1200 after noon</p>
+                  <p class="rule-body">12:00 PM becomes 1200, then keep adding 100 for every hour after.</p>
+                </div>
+                <div class="rule-card highlight">
+                  <p class="rule-title">Mind midnight vs. noon</p>
+                  <p class="rule-body">12:00 AM = 0000 (midnight). 12:00 PM = 1200 (noon).</p>
+                </div>
+                <div class="rule-card">
+                  <p class="rule-title">Leading zero in the morning</p>
+                  <p class="rule-body">Use a zero before 1:00–9:00 AM (e.g., 7:00 AM → 0700).</p>
+                </div>
               </div>
-              <div class="time-chip">
-                <span class="time-standard">1:00 PM</span>
-                <span class="time-arrow" aria-hidden="true"></span>
-                <span class="time-military">1300</span>
-              </div>
-              <div class="time-chip">
-                <span class="time-standard">2:00 PM</span>
-                <span class="time-arrow" aria-hidden="true"></span>
-                <span class="time-military">1400</span>
-              </div>
-              <div class="time-chip">
-                <span class="time-standard">3:00 PM</span>
-                <span class="time-arrow" aria-hidden="true"></span>
-                <span class="time-military">1500</span>
-              </div>
-              <div class="time-chip">
-                <span class="time-standard">4:00 PM</span>
-                <span class="time-arrow" aria-hidden="true"></span>
-                <span class="time-military">1600</span>
-              </div>
-              <div class="time-chip">
-                <span class="time-standard">5:00 PM</span>
-                <span class="time-arrow" aria-hidden="true"></span>
-                <span class="time-military">1700</span>
-              </div>
-              <div class="time-chip">
-                <span class="time-standard">6:00 PM</span>
-                <span class="time-arrow" aria-hidden="true"></span>
-                <span class="time-military">1800</span>
-              </div>
-              <div class="time-chip">
-                <span class="time-standard">7:00 PM</span>
-                <span class="time-arrow" aria-hidden="true"></span>
-                <span class="time-military">1900</span>
-              </div>
-              <div class="time-chip">
-                <span class="time-standard">8:00 PM</span>
-                <span class="time-arrow" aria-hidden="true"></span>
-                <span class="time-military">2000</span>
-              </div>
-              <div class="time-chip">
-                <span class="time-standard">9:00 PM</span>
-                <span class="time-arrow" aria-hidden="true"></span>
-                <span class="time-military">2100</span>
-              </div>
-              <div class="time-chip">
-                <span class="time-standard">10:00 PM</span>
-                <span class="time-arrow" aria-hidden="true"></span>
-                <span class="time-military">2200</span>
-              </div>
-              <div class="time-chip">
-                <span class="time-standard">11:00 PM</span>
-                <span class="time-arrow" aria-hidden="true"></span>
-                <span class="time-military">2300</span>
+
+              <div class="time-table" role="table" aria-label="Standard time to military time reference">
+                <div class="time-head" role="row">
+                  <div class="time-cell heading" role="columnheader">Standard</div>
+                  <div class="time-cell heading" role="columnheader">Military</div>
+                  <div class="time-cell heading" role="columnheader">Standard</div>
+                  <div class="time-cell heading" role="columnheader">Military</div>
+                </div>
+                <div class="time-row" role="row">
+                  <div class="time-cell" role="cell"><span class="time-label">12:00 AM</span><span class="time-note">Midnight</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">0000</span></div>
+                  <div class="time-cell" role="cell"><span class="time-label">12:00 PM</span><span class="time-note">Noon</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">1200</span></div>
+                </div>
+                <div class="time-row" role="row">
+                  <div class="time-cell" role="cell"><span class="time-label">1:00 AM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">0100</span></div>
+                  <div class="time-cell" role="cell"><span class="time-label">1:00 PM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">1300</span></div>
+                </div>
+                <div class="time-row" role="row">
+                  <div class="time-cell" role="cell"><span class="time-label">2:00 AM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">0200</span></div>
+                  <div class="time-cell" role="cell"><span class="time-label">2:00 PM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">1400</span></div>
+                </div>
+                <div class="time-row" role="row">
+                  <div class="time-cell" role="cell"><span class="time-label">3:00 AM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">0300</span></div>
+                  <div class="time-cell" role="cell"><span class="time-label">3:00 PM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">1500</span></div>
+                </div>
+                <div class="time-row" role="row">
+                  <div class="time-cell" role="cell"><span class="time-label">4:00 AM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">0400</span></div>
+                  <div class="time-cell" role="cell"><span class="time-label">4:00 PM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">1600</span></div>
+                </div>
+                <div class="time-row" role="row">
+                  <div class="time-cell" role="cell"><span class="time-label">5:00 AM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">0500</span></div>
+                  <div class="time-cell" role="cell"><span class="time-label">5:00 PM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">1700</span></div>
+                </div>
+                <div class="time-row" role="row">
+                  <div class="time-cell" role="cell"><span class="time-label">6:00 AM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">0600</span></div>
+                  <div class="time-cell" role="cell"><span class="time-label">6:00 PM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">1800</span></div>
+                </div>
+                <div class="time-row" role="row">
+                  <div class="time-cell" role="cell"><span class="time-label">7:00 AM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">0700</span></div>
+                  <div class="time-cell" role="cell"><span class="time-label">7:00 PM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">1900</span></div>
+                </div>
+                <div class="time-row" role="row">
+                  <div class="time-cell" role="cell"><span class="time-label">8:00 AM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">0800</span></div>
+                  <div class="time-cell" role="cell"><span class="time-label">8:00 PM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">2000</span></div>
+                </div>
+                <div class="time-row" role="row">
+                  <div class="time-cell" role="cell"><span class="time-label">9:00 AM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">0900</span></div>
+                  <div class="time-cell" role="cell"><span class="time-label">9:00 PM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">2100</span></div>
+                </div>
+                <div class="time-row" role="row">
+                  <div class="time-cell" role="cell"><span class="time-label">10:00 AM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">1000</span></div>
+                  <div class="time-cell" role="cell"><span class="time-label">10:00 PM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">2200</span></div>
+                </div>
+                <div class="time-row" role="row">
+                  <div class="time-cell" role="cell"><span class="time-label">11:00 AM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">1100</span></div>
+                  <div class="time-cell" role="cell"><span class="time-label">11:00 PM</span></div>
+                  <div class="time-cell" role="cell"><span class="time-military">2300</span></div>
+                </div>
               </div>
             </div>
           </article>
