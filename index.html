@@ -37,25 +37,34 @@
   </nav>
 
   <main>
-    <section id="daily-checklist" class="card hero-card">
-      <div class="pill">Start of shift</div>
-      <h2 class="card-title">Daily checklist for curbside/delivery/3PSD partners</h2>
-      <p>Start each shift with these tools ready:</p>
-      <ul class="stacked-list">
-        <li>
-          Re-authenticate Zscaler app on your PC.
-          <img src="assets/ZS.png" alt="Zscaler logo" class="inline-logo" />
-        </li>
-        <li><a href="https://heb.logile.com/portal/2018/main_pc.seam?cid=1293536" target="_blank" rel="noopener">Logile (Clock in)</a></li>
-        <li><a href="https://heb.lightning.force.com/lightning/page/home" target="_blank" rel="noopener">Salesforce</a></li>
-        <li><a href="https://comsui-new.heb.com/COMSDashboard/" target="_blank" rel="noopener">COMS</a></li>
-        <li><a href="https://csr.retail.prod.heb.com/hebtools/CSRLogin.jsp" target="_blank" rel="noopener">CSR</a></li>
-        <li><a href="https://df.heb.com/login" target="_blank" rel="noopener">FAST</a></li>
-        <li><a href="https://fleet.favordelivery.com/" target="_blank" rel="noopener">Favor portal</a></li>
-        <li><a href="https://www.doordash.com/merchant/accounts?business_id=13030695" target="_blank" rel="noopener">DoorDash portal</a></li>
-        <li><a href="https://logix.heb.com/logix/login.aspx?mode=invalid&bounceback=https%3a%2f%2flogix.heb.com%2flogix%2fstatus.aspx" target="_blank" rel="noopener">Logix (DC)</a></li>
-        <li><a href="https://sms.heb.com/salt/rag/#/reports/users/activity" target="_blank" rel="noopener">SALT</a></li>
-      </ul>
+    <section id="daily-checklist" class="section-block">
+      <div class="section-header">
+        <div class="section-pill checklist">Checklist</div>
+        <div class="section-heading">
+          <h2>Start-of-shift essentials</h2>
+          <p>Keep your core tools open before the first order hits.</p>
+        </div>
+      </div>
+
+      <article class="card hero-card">
+        <h3 class="card-title">Daily checklist for curbside/delivery/3PSD partners</h3>
+        <p>Start each shift with these tools ready:</p>
+        <ul class="stacked-list">
+          <li>
+            Re-authenticate Zscaler app on your PC.
+            <img src="assets/ZS.png" alt="Zscaler logo" class="inline-logo" />
+          </li>
+          <li><a href="https://heb.logile.com/portal/2018/main_pc.seam?cid=1293536" target="_blank" rel="noopener">Logile (Clock in)</a></li>
+          <li><a href="https://heb.lightning.force.com/lightning/page/home" target="_blank" rel="noopener">Salesforce</a></li>
+          <li><a href="https://comsui-new.heb.com/COMSDashboard/" target="_blank" rel="noopener">COMS</a></li>
+          <li><a href="https://csr.retail.prod.heb.com/hebtools/CSRLogin.jsp" target="_blank" rel="noopener">CSR</a></li>
+          <li><a href="https://df.heb.com/login" target="_blank" rel="noopener">FAST</a></li>
+          <li><a href="https://fleet.favordelivery.com/" target="_blank" rel="noopener">Favor portal</a></li>
+          <li><a href="https://www.doordash.com/merchant/accounts?business_id=13030695" target="_blank" rel="noopener">DoorDash portal</a></li>
+          <li><a href="https://logix.heb.com/logix/login.aspx?mode=invalid&bounceback=https%3a%2f%2flogix.heb.com%2flogix%2fstatus.aspx" target="_blank" rel="noopener">Logix (DC)</a></li>
+          <li><a href="https://sms.heb.com/salt/rag/#/reports/users/activity" target="_blank" rel="noopener">SALT</a></li>
+        </ul>
+      </article>
     </section>
 
     <section id="operations" class="section-block">
@@ -180,17 +189,21 @@
             </ul>
           </article>
         </div>
+      </div>
+    </section>
 
+    <section id="digital-coupons" class="section-block">
+      <div class="section-header">
+        <div class="section-pill digital">Digital coupons</div>
+        <div class="section-heading">
+          <h2>Digital coupon toolkit</h2>
+          <p>Keep every DC tool visible while you scroll.</p>
+        </div>
+      </div>
+
+      <div class="content-grid">
         <div class="column">
-          <div id="digital-coupons" class="sticky-rail" aria-label="Digital coupons quick access">
-            <div class="rail-header">
-              <div class="section-pill digital">Digital coupons</div>
-              <div>
-                <h2 class="rail-title">Sticky access</h2>
-                <p class="rail-description">Keep every DC tool visible while you scroll.</p>
-              </div>
-            </div>
-
+          <div class="sticky-rail" aria-label="Digital coupons quick access">
             <article class="card">
               <h2 class="card-title">Digital coupons</h2>
               <p>Check guest savings before finalizing orders.</p>
@@ -364,19 +377,29 @@
       </div>
     </section>
 
-    <section id="pro-tips" class="card pro-tips-card">
-      <h2 class="card-title">Pro tips</h2>
-      <div class="pro-tip-list">
-        <details class="pro-tip">
-          <summary>
-            <span class="pro-tip-title">Use customer id in Salesforce</span>
-          </summary>
-          <div class="pro-tip-body">
-            Use the customer id from CSR when creating Salesforce cases so you can reliably retrieve the order information.
-          </div>
-          <div class="pro-tip-meta" aria-label="Suggested by"><span class="pro-tip-author">Martinez, Abby</span></div>
-        </details>
+    <section id="pro-tips" class="section-block">
+      <div class="section-header">
+        <div class="section-pill pro">Pro tips</div>
+        <div class="section-heading">
+          <h2>Pro tips</h2>
+          <p>Keep reliable tricks handy for new and seasoned partners.</p>
+        </div>
       </div>
+
+      <article class="card pro-tips-card">
+        <h3 class="card-title">Pro tips</h3>
+        <div class="pro-tip-list">
+          <details class="pro-tip">
+            <summary>
+              <span class="pro-tip-title">Use customer id in Salesforce</span>
+            </summary>
+            <div class="pro-tip-body">
+              Use the customer id from CSR when creating Salesforce cases so you can reliably retrieve the order information.
+            </div>
+            <div class="pro-tip-meta" aria-label="Suggested by"><span class="pro-tip-author">Martinez, Abby</span></div>
+          </details>
+        </div>
+      </article>
     </section>
   </main>
 
