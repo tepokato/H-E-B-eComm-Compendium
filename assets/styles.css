@@ -199,6 +199,20 @@ main {
   box-shadow: 0 6px 14px rgba(147, 51, 234, 0.12);
 }
 
+.section-pill.checklist {
+  background: #fffbeb;
+  color: #b45309;
+  border-color: #fef3c7;
+  box-shadow: 0 6px 14px rgba(180, 83, 9, 0.12);
+}
+
+.section-pill.pro {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #dbeafe;
+  box-shadow: 0 6px 14px rgba(29, 78, 216, 0.12);
+}
+
 .hero-card {
   position: relative;
   border: 1.5px solid #f3f4f6;
