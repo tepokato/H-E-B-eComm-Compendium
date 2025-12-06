@@ -496,6 +496,32 @@ a {
   font-weight: 700;
 }
 
+.footer-bar {
+  margin-top: 18px;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -6px 14px rgba(0, 0, 0, 0.04);
+}
+
+.footer-bar__inner {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-bar__label {
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
 footer {
   padding: 20px 22px 28px;
   text-align: center;
