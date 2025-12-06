@@ -83,12 +83,10 @@ header {
   letter-spacing: 0.3px;
 }
 
-.brand span {
-  background: var(--heb-red);
-  color: #fff;
-  padding: 8px 14px;
-  border-radius: 999px;
-  box-shadow: 0 4px 12px rgba(227, 18, 44, 0.2);
+.brand-logo {
+  height: 48px;
+  width: auto;
+  display: block;
 }
 
 main {
