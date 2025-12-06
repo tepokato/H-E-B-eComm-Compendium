@@ -8,6 +8,7 @@
   --text: #1e1f23;
   --muted: #4b5563;
   --border: #e5e7eb;
+  --logo-filter: none;
 }
 
 body.theme-dark {
@@ -20,6 +21,7 @@ body.theme-dark {
   --text: #e5e7eb;
   --muted: #cbd5e1;
   --border: #1f2937;
+  --logo-filter: brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(-8deg) contrast(1.05);
   color-scheme: dark;
 }
 
@@ -102,6 +104,8 @@ header {
   height: 42px;
   width: auto;
   display: block;
+  filter: var(--logo-filter);
+  transition: filter 0.2s ease;
 }
 
 main {
