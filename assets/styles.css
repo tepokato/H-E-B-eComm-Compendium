@@ -702,6 +702,47 @@ footer {
   margin-bottom: 10px;
 }
 
+.tip-group-header {
+  --tip-accent: #e71837;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 6px 0;
+}
+
+.tip-group-header h4 {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+}
+
+.tip-group-header h4::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--tip-accent);
+  box-shadow: 0 0 0 5px var(--surface);
+}
+
+.tip-group-header.store-teams {
+  --tip-accent: #e11d48;
+}
+
+.tip-group-header.contact-center {
+  --tip-accent: #0891b2;
+}
+
+.tip-group-header.coupons {
+  --tip-accent: #a855f7;
+}
+
+.tip-group-header.all-partners {
+  --tip-accent: #f59e0b;
+}
+
 .tip-list {
   display: flex;
   flex-direction: column;
