@@ -4,6 +4,9 @@ const currentDateEl = document.getElementById("current-date");
 const backToTopButton = document.getElementById("back-to-top");
 const copyButtons = document.querySelectorAll(".icon-button[data-copy]");
 const navLinks = document.querySelectorAll(".section-nav a[href^='#']");
+const themeToggleButton = document.getElementById("theme-toggle");
+const themeToggleText = themeToggleButton?.querySelector(".theme-text");
+const themeToggleIcon = themeToggleButton?.querySelector(".theme-icon");
 const sectionTargets = Array.from(navLinks)
   .map((link) => {
     const hash = link.getAttribute("href");
@@ -11,6 +14,44 @@ const sectionTargets = Array.from(navLinks)
     return document.querySelector(hash);
   })
   .filter(Boolean);
+
+const storedTheme = localStorage.getItem("theme");
+const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)");
+const initialTheme = storedTheme || (prefersDark?.matches ? "dark" : "light");
+
+function updateThemeToggle(isDark) {
+  if (!themeToggleButton || !themeToggleText || !themeToggleIcon) return;
+  themeToggleButton.setAttribute("aria-pressed", String(isDark));
+  themeToggleText.textContent = isDark ? "Light mode" : "Dark mode";
+  themeToggleIcon.textContent = isDark ? "🌞" : "🌙";
+}
+
+function applyTheme(theme, persist = false) {
+  const isDark = theme === "dark";
+  document.body.classList.toggle("theme-dark", isDark);
+  document.body.classList.toggle("theme-light", !isDark);
+  updateThemeToggle(isDark);
+
+  if (persist) {
+    localStorage.setItem("theme", theme);
+  }
+}
+
+applyTheme(initialTheme);
+
+if (prefersDark?.addEventListener) {
+  prefersDark.addEventListener("change", (event) => {
+    if (!localStorage.getItem("theme")) {
+      applyTheme(event.matches ? "dark" : "light");
+    }
+  });
+} else if (prefersDark?.addListener) {
+  prefersDark.addListener((event) => {
+    if (!localStorage.getItem("theme")) {
+      applyTheme(event.matches ? "dark" : "light");
+    }
+  });
+}
 
 const timeOptions = { hour: "numeric", minute: "2-digit", hour12: true };
 const militaryTimeOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
@@ -84,6 +125,15 @@ navLinks.forEach((link) => {
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
+
+if (themeToggleButton) {
+  themeToggleButton.addEventListener("click", () => {
+    const nextTheme = document.body.classList.contains("theme-dark")
+      ? "light"
+      : "dark";
+    applyTheme(nextTheme, true);
+  });
+}
 
 if (sectionTargets.length && "IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
