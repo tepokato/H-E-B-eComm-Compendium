@@ -204,7 +204,7 @@ main {
   box-shadow: 0 6px 14px rgba(180, 83, 9, 0.12);
 }
 
-.section-pill.pro {
+.section-pill.tips {
   background: #eff6ff;
   color: #1d4ed8;
   border-color: #dbeafe;
@@ -659,17 +659,17 @@ footer {
   transform: translateY(0);
 }
 
-.pro-tips-card .card-title {
+.tips-card .card-title {
   margin-bottom: 10px;
 }
 
-.pro-tip-list {
+.tip-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.pro-tip {
+.tip {
   border: 1px solid var(--border);
   background: #f9fafb;
   border-radius: 12px;
@@ -678,12 +678,12 @@ footer {
   transition: border-color 0.12s ease, box-shadow 0.12s ease;
 }
 
-.pro-tip[open] {
+.tip[open] {
   border-color: #d1d5db;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
-.pro-tip summary {
+.tip summary {
   cursor: pointer;
   font-weight: 700;
   color: var(--text);
@@ -694,17 +694,17 @@ footer {
   gap: 10px;
 }
 
-.pro-tip-title {
+.tip-title {
   display: block;
   font-weight: 700;
   color: var(--text);
 }
 
-.pro-tip summary::-webkit-details-marker {
+.tip summary::-webkit-details-marker {
   display: none;
 }
 
-.pro-tip summary::after {
+.tip summary::after {
   content: "⌄";
   font-weight: 900;
   color: var(--muted);
@@ -712,11 +712,11 @@ footer {
   transition: transform 0.12s ease;
 }
 
-.pro-tip[open] summary::after {
+.tip[open] summary::after {
   transform: rotate(180deg);
 }
 
-.pro-tip-body {
+.tip-body {
   margin: 10px 4px 0;
   padding: 10px 12px;
   background: #fff;
@@ -726,7 +726,7 @@ footer {
   line-height: 1.6;
 }
 
-.pro-tip-meta {
+.tip-meta {
   margin: 10px 4px 8px;
   padding: 10px;
   background: #eef2ff;
@@ -736,7 +736,7 @@ footer {
   border: 1px solid #e0e7ff;
 }
 
-.pro-tip-author {
+.tip-author {
   font-style: italic;
 }
 
