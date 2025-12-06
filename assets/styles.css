@@ -10,6 +10,8 @@
   --border: #e5e7eb;
   --glass-bg: rgba(255, 255, 255, 0.92);
   --glass-border: rgba(226, 232, 240, 0.8);
+  --back-to-top-bg: rgba(255, 255, 255, 0.68);
+  --back-to-top-border: rgba(226, 232, 240, 0.6);
   --logo-filter: none;
 }
 
@@ -25,6 +27,8 @@ body.theme-dark {
   --border: #1f2937;
   --glass-bg: rgba(15, 23, 42, 0.88);
   --glass-border: rgba(148, 163, 184, 0.35);
+  --back-to-top-bg: rgba(15, 23, 42, 0.75);
+  --back-to-top-border: rgba(148, 163, 184, 0.32);
   --logo-filter: brightness(0) invert(1) sepia(0.22) saturate(9) hue-rotate(-6deg) brightness(1.08) contrast(0.96);
   color-scheme: dark;
 }
@@ -666,8 +670,8 @@ footer {
   position: fixed;
   right: 22px;
   bottom: 22px;
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
+  border: 1px solid var(--back-to-top-border);
+  background: var(--back-to-top-bg);
   color: var(--text);
   border-radius: 999px;
   padding: 10px 14px;
@@ -891,8 +895,8 @@ footer {
 }
 
 .theme-dark .back-to-top {
-  background: var(--glass-bg);
-  border-color: var(--glass-border);
+  background: var(--back-to-top-bg);
+  border-color: var(--back-to-top-border);
 }
 
 .theme-dark .tip-meta {
