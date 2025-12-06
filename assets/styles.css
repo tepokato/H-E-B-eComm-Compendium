@@ -319,37 +319,6 @@ a {
   gap: 12px;
 }
 
-.time-rules {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 10px;
-}
-
-.rule-card {
-  background: #f9fafb;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
-}
-
-.rule-card.highlight {
-  background: #fdf2f2;
-  border-color: #fecdd3;
-  box-shadow: 0 10px 20px rgba(227, 18, 44, 0.12);
-}
-
-.rule-title {
-  margin: 0 0 4px;
-  font-weight: 800;
-  color: var(--text);
-}
-
-.rule-body {
-  margin: 0;
-  color: var(--muted);
-}
-
 .time-table {
   background: #ffffff;
   border: 1.5px solid #dbeafe;
@@ -360,14 +329,14 @@ a {
 
 .time-head {
   display: grid;
-  grid-template-columns: 1fr 0.8fr 1fr 0.8fr;
+  grid-template-columns: 1fr 0.8fr;
   background: linear-gradient(180deg, #e0f2fe, #f8fafc);
   border-bottom: 1px solid #e5e7eb;
 }
 
 .time-row {
   display: grid;
-  grid-template-columns: 1fr 0.8fr 1fr 0.8fr;
+  grid-template-columns: 1fr 0.8fr;
   border-bottom: 1px solid #f1f5f9;
 }
 
@@ -418,15 +387,6 @@ a {
   .time-head,
   .time-row {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .time-row {
-    row-gap: 4px;
-  }
-
-  .time-cell:nth-child(3),
-  .time-cell:nth-child(4) {
-    border-top: 1px dashed #e5e7eb;
   }
 }
 
