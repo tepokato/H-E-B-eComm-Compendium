@@ -108,6 +108,11 @@ header {
   transition: filter 0.2s ease;
 }
 
+body.theme-dark .brand-logo {
+  /* Ensure the dark-mode overlay always applies, even if custom properties fail to cascade. */
+  filter: brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(-8deg) contrast(1.05);
+}
+
 main {
   max-width: 1220px;
   margin: 0 auto;
