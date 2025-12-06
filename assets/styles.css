@@ -702,34 +702,6 @@ footer {
   margin-bottom: 10px;
 }
 
-.tip-group-header {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-  padding: 6px 10px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.tip-group-header h4 {
-  margin: 0;
-}
-
-.tip-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: #eef2ff;
-  color: #312e81;
-  border: 1px solid #e0e7ff;
-  font-weight: 800;
-  font-size: 13px;
-}
-
 .tip-list {
   display: flex;
   flex-direction: column;
@@ -838,12 +810,6 @@ footer {
 .theme-dark .tip-body,
 .theme-dark .back-to-top {
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
-}
-
-.theme-dark .tip-chip {
-  background: #0b1628;
-  color: #e0f2fe;
-  border-color: #1f2937;
 }
 
 .theme-dark .section-nav {
