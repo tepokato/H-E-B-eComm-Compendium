@@ -149,16 +149,24 @@ if (themeToggleButton) {
 if (sectionTargets.length && "IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const id = entry.target.id;
-        const activeLink = document.querySelector(
-          `.section-nav a[href="#${id}"]`
-        );
-        if (!activeLink) return;
-        navLinks.forEach((link) => link.classList.remove("active"));
-        activeLink.classList.add("active");
-      });
+      const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+      if (!visibleEntries.length) return;
+
+      const dominantEntry = visibleEntries.reduce((current, candidate) => {
+        if (!current) return candidate;
+        return candidate.intersectionRatio > current.intersectionRatio
+          ? candidate
+          : current;
+      }, null);
+
+      if (!dominantEntry) return;
+      const id = dominantEntry.target.id;
+      const activeLink = document.querySelector(
+        `.section-nav a[href="#${id}"]`
+      );
+      if (!activeLink) return;
+      navLinks.forEach((link) => link.classList.remove("active"));
+      activeLink.classList.add("active");
     },
     {
       rootMargin: "-40% 0px -40% 0px",
