@@ -513,7 +513,7 @@ a {
 }
 
 .footer-bar {
-  margin-top: 18px;
+  margin-top: 12px;
   background: var(--card);
   border-top: 1px solid var(--border);
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.04);
@@ -522,7 +522,7 @@ a {
 .footer-bar-inner {
   max-width: 1220px;
   margin: 0 auto;
-  padding: 10px 18px;
+  padding: 6px 14px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -539,13 +539,13 @@ a {
 }
 
 .footer-bar .chip-button {
-  padding: 8px 12px;
+  padding: 6px 10px;
   font-size: 14px;
 }
 
 .footer-bar .theme-toggle {
-  gap: 6px;
-  padding: 8px 12px;
+  gap: 4px;
+  padding: 6px 10px;
 }
 
 footer {
