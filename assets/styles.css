@@ -18,8 +18,8 @@
   --accent-sky-contrast: #f8fafc;
   --accent-sky-strong: #d1d5db;
   --accent-sky-border: #bae6fd;
-  --nav-offset: 74px;
-  --nav-height: 52px;
+  --nav-offset: 64px;
+  --nav-height: 46px;
   --section-label-offset: calc(var(--nav-offset) + var(--nav-height));
 }
 
@@ -73,11 +73,11 @@ body {
 header {
   background: var(--card);
   border-bottom: 1px solid var(--border);
-  padding: 18px 22px;
+  padding: 12px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   position: sticky;
   top: 0;
   z-index: 2;
@@ -88,8 +88,8 @@ header {
   top: var(--nav-offset);
   z-index: 1;
   display: flex;
-  gap: 8px;
-  padding: 10px 22px 8px;
+  gap: 6px;
+  padding: 8px 18px 6px;
   margin: 0;
   background: linear-gradient(180deg, rgba(247, 248, 251, 0.95), rgba(247, 248, 251, 0.9));
   backdrop-filter: blur(10px);
@@ -99,14 +99,15 @@ header {
 .section-nav a {
   display: inline-flex;
   align-items: center;
-  padding: 10px 14px;
-  border-radius: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
   border: 1px solid var(--border);
   background: var(--card);
   color: var(--muted);
+  font-size: 14px;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
   transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, color 0.12s ease;
 }
 
@@ -128,13 +129,13 @@ header {
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-weight: 700;
   letter-spacing: 0.3px;
 }
 
 .brand-logo {
-  height: 42px;
+  height: 36px;
   width: auto;
   display: block;
   filter: var(--logo-filter);
@@ -443,7 +444,7 @@ a {
 .header-info {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
@@ -455,10 +456,10 @@ a {
 }
 
 .condensed-time {
-  gap: 8px;
+  gap: 6px;
   justify-content: flex-start;
   flex-wrap: wrap;
-  padding: 10px 12px;
+  padding: 8px 10px;
 }
 
 .condensed-time .chip-label,
@@ -956,8 +957,8 @@ footer {
 
 @media (max-width: 720px) {
   :root {
-    --nav-offset: 136px;
-    --nav-height: 64px;
+    --nav-offset: 122px;
+    --nav-height: 56px;
   }
 
   header {
