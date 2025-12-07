@@ -13,6 +13,11 @@
   --back-to-top-bg: rgba(255, 255, 255, 0.68);
   --back-to-top-border: rgba(226, 232, 240, 0.6);
   --logo-filter: none;
+  --accent-sky: #0ea5e9;
+  --accent-sky-light: #e0f2fe;
+  --accent-sky-contrast: #f8fafc;
+  --accent-sky-strong: #d1d5db;
+  --accent-sky-border: #bae6fd;
 }
 
 body.theme-dark {
@@ -30,6 +35,11 @@ body.theme-dark {
   --back-to-top-bg: rgba(15, 23, 42, 0.75);
   --back-to-top-border: rgba(148, 163, 184, 0.32);
   --logo-filter: brightness(0) invert(1) sepia(0.22) saturate(9) hue-rotate(-6deg) brightness(1.08) contrast(0.96);
+  --accent-sky: #38bdf8;
+  --accent-sky-light: rgba(14, 165, 233, 0.18);
+  --accent-sky-contrast: rgba(248, 250, 252, 0.08);
+  --accent-sky-strong: #94a3b8;
+  --accent-sky-border: rgba(103, 232, 249, 0.6);
   color-scheme: dark;
 }
 
@@ -88,16 +98,16 @@ header {
 .section-nav a:hover,
 .section-nav a:focus-visible {
   color: var(--text);
-  border-color: #d1d5db;
+  border-color: var(--accent-sky-strong);
   transform: translateY(-1px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
 .section-nav a.active {
   color: var(--text);
-  border-color: #0ea5e9;
-  background: linear-gradient(180deg, #e0f2fe, #f8fafc);
-  box-shadow: inset 0 0 0 2px #0ea5e9, 0 12px 22px rgba(14, 165, 233, 0.16);
+  border-color: var(--accent-sky);
+  background: linear-gradient(180deg, var(--accent-sky-light), var(--accent-sky-contrast));
+  box-shadow: inset 0 0 0 2px var(--accent-sky), 0 12px 22px rgba(14, 165, 233, 0.16);
 }
 
 .brand {
@@ -138,35 +148,6 @@ main {
   gap: 14px;
 }
 
-.sticky-rail {
-  position: sticky;
-  top: 96px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-self: flex-start;
-}
-
-.rail-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  background: linear-gradient(180deg, #f8fafc, #fff);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-}
-
-.rail-title {
-  margin: 0;
-  font-size: 18px;
-}
-
-.rail-description {
-  margin: 2px 0 0;
-}
-
 .section-pill.digital {
   background: #fff1f2;
   color: #be123c;
@@ -201,9 +182,9 @@ main {
 }
 
 .section-pill {
-  background: #ecfeff;
-  color: #0ea5e9;
-  border: 1px solid #bae6fd;
+  background: var(--accent-sky-light);
+  color: var(--accent-sky);
+  border: 1px solid var(--accent-sky-border);
   padding: 10px 12px;
   border-radius: 12px;
   font-weight: 800;
@@ -313,7 +294,8 @@ a {
   margin-bottom: 10px;
 }
 
-.card-title {
+.card-title,
+.feedback-note {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -348,7 +330,7 @@ a {
 .time-head {
   display: grid;
   grid-template-columns: 1fr 0.8fr;
-  background: linear-gradient(180deg, #e0f2fe, #f8fafc);
+  background: linear-gradient(180deg, var(--accent-sky-light), var(--accent-sky-contrast));
   border-bottom: 1px solid var(--border);
 }
 
@@ -372,7 +354,7 @@ a {
 
 .time-cell.heading {
   font-weight: 800;
-  color: #0ea5e9;
+  color: var(--accent-sky);
   text-transform: uppercase;
   letter-spacing: 0.4px;
   font-size: 12px;
@@ -516,7 +498,7 @@ a {
   box-shadow: 0 -6px 14px rgba(0, 0, 0, 0.04);
 }
 
-.footer-bar__inner {
+.footer-bar-inner {
   max-width: 1220px;
   margin: 0 auto;
   padding: 14px 22px;
@@ -527,7 +509,7 @@ a {
   flex-wrap: wrap;
 }
 
-.footer-bar__label {
+.footer-bar-label {
   font-weight: 800;
   letter-spacing: 0.4px;
   color: var(--muted);
@@ -873,8 +855,8 @@ footer {
 }
 
 .theme-dark .section-nav a.active {
-  background: linear-gradient(180deg, rgba(14, 165, 233, 0.18), rgba(248, 250, 252, 0.08));
-  box-shadow: inset 0 0 0 2px #0ea5e9, 0 12px 22px rgba(14, 165, 233, 0.25);
+  background: linear-gradient(180deg, var(--accent-sky-light), var(--accent-sky-contrast));
+  box-shadow: inset 0 0 0 2px var(--accent-sky), 0 12px 22px rgba(14, 165, 233, 0.25);
 }
 
 .theme-dark .time-head {
@@ -920,15 +902,6 @@ footer {
 
   .content-grid .column {
     gap: 18px;
-  }
-
-  .sticky-rail {
-    position: static;
-  }
-
-  .rail-header {
-    flex-direction: column;
-    align-items: flex-start;
   }
 
   .section-block {
