@@ -682,7 +682,7 @@ footer {
 .back-to-top {
   position: fixed;
   right: 22px;
-  bottom: 110px;
+  bottom: 200px;
   border: 1px solid var(--back-to-top-border);
   background: var(--back-to-top-bg);
   color: var(--text);
