@@ -552,7 +552,8 @@ footer {
   padding: 20px 22px 28px;
   text-align: center;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .contact-list {
