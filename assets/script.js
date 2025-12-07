@@ -3,6 +3,7 @@ const centralMilitaryTimeEl = document.getElementById("central-military-time");
 const currentDateEl = document.getElementById("current-date");
 const backToTopButton = document.getElementById("back-to-top");
 const copyButtons = document.querySelectorAll(".icon-button[data-copy]");
+const copyStatus = document.getElementById("copy-status");
 const navLinks = document.querySelectorAll(".section-nav a[href^='#']");
 const themeToggleButton = document.getElementById("theme-toggle");
 const themeToggleText = themeToggleButton?.querySelector(".theme-text");
@@ -94,6 +95,14 @@ if (backToTopButton) {
 window.addEventListener("scroll", toggleBackToTop);
 toggleBackToTop();
 
+function announceCopyStatus(message) {
+  if (!copyStatus) return;
+  copyStatus.textContent = "";
+  window.setTimeout(() => {
+    copyStatus.textContent = message;
+  }, 10);
+}
+
 copyButtons.forEach((button) => {
   button.addEventListener("click", async () => {
     const text = button.getAttribute("data-copy");
@@ -102,12 +111,14 @@ copyButtons.forEach((button) => {
     try {
       await navigator.clipboard.writeText(text);
       button.textContent = "Copied";
+      announceCopyStatus(`${text} copied to clipboard.`);
       setTimeout(() => {
         button.textContent = "Copy";
       }, 1200);
     } catch (error) {
       console.error("Copy failed", error);
       button.textContent = "Copy failed";
+      announceCopyStatus("Copy failed. Please try again.");
       setTimeout(() => {
         button.textContent = "Copy";
       }, 1200);
