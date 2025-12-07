@@ -18,6 +18,9 @@
   --accent-sky-contrast: #f8fafc;
   --accent-sky-strong: #d1d5db;
   --accent-sky-border: #bae6fd;
+  --nav-offset: 74px;
+  --nav-height: 52px;
+  --section-label-offset: calc(var(--nav-offset) + var(--nav-height));
 }
 
 body.theme-dark {
@@ -70,7 +73,7 @@ header {
 
 .section-nav {
   position: sticky;
-  top: 74px;
+  top: var(--nav-offset);
   z-index: 1;
   display: flex;
   gap: 8px;
@@ -162,6 +165,11 @@ main {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.section-block .section-header {
+  position: relative;
+  z-index: 0;
 }
 
 .section-header {
@@ -908,6 +916,10 @@ footer {
     gap: 14px;
   }
 
+  .section-block .section-header {
+    padding: 6px 0;
+  }
+
   .section-header {
     padding: 0;
   }
@@ -922,13 +934,73 @@ footer {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --nav-offset: 136px;
+    --nav-height: 64px;
+  }
+
   header {
     flex-direction: column;
     align-items: flex-start;
   }
 
   .section-nav {
-    top: 136px;
     flex-wrap: wrap;
+  }
+
+  main {
+    padding: 14px;
+    gap: 14px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .stacked-list {
+    gap: 6px;
+  }
+
+  .content-grid {
+    gap: 14px;
+  }
+
+  .content-grid .column {
+    gap: 14px;
+  }
+
+  .content-grid .card,
+  .section-block > .card {
+    position: relative;
+  }
+
+  .content-grid .card + .card::before,
+  .section-block > .card + .card::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  .section-block .section-header {
+    position: sticky;
+    top: var(--section-label-offset);
+    padding: 10px 12px;
+    margin: 0 -4px;
+    background: linear-gradient(180deg, var(--bg), var(--card));
+    border-bottom: 1px solid var(--border);
+    z-index: 1;
+  }
+
+  .section-heading h2 {
+    font-size: 20px;
+  }
+
+  .section-heading p {
+    font-size: 14px;
+    margin-top: 2px;
   }
 }
