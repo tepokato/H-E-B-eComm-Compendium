@@ -2,7 +2,6 @@ const centralTimeEl = document.getElementById("central-time");
 const centralMilitaryTimeEl = document.getElementById("central-military-time");
 const currentDateEl = document.getElementById("current-date");
 const backToTopButton = document.getElementById("back-to-top");
-let hideBackToTopTimeout;
 const copyButtons = document.querySelectorAll(".icon-button[data-copy]");
 const copyStatus = document.getElementById("copy-status");
 const navLinks = document.querySelectorAll(".section-nav a[href^='#']");
@@ -82,22 +81,9 @@ function toggleBackToTop() {
   if (!backToTopButton) return;
   if (window.scrollY > 120) {
     backToTopButton.classList.add("visible");
-    backToTopButton.classList.remove("slid-out");
-    scheduleBackToTopHide();
   } else {
-    backToTopButton.classList.remove("visible", "slid-out");
-    clearTimeout(hideBackToTopTimeout);
+    backToTopButton.classList.remove("visible");
   }
-}
-
-function scheduleBackToTopHide() {
-  if (!backToTopButton) return;
-  clearTimeout(hideBackToTopTimeout);
-  hideBackToTopTimeout = window.setTimeout(() => {
-    if (backToTopButton.classList.contains("visible")) {
-      backToTopButton.classList.add("slid-out");
-    }
-  }, 5000);
 }
 
 if (backToTopButton) {
