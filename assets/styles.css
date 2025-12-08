@@ -725,12 +725,6 @@ footer {
   pointer-events: auto;
 }
 
-.back-to-top.slid-out {
-  transform: translateX(120%);
-  opacity: 0;
-  pointer-events: none;
-}
-
 .back-to-top:focus-visible {
   outline: 3px solid var(--accent-sky);
   outline-offset: 4px;
