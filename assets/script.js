@@ -16,6 +16,16 @@ const sectionTargets = Array.from(navLinks)
   })
   .filter(Boolean);
 
+let activeSectionId = null;
+
+function setActiveLink(id) {
+  if (!id || id === activeSectionId) return;
+  activeSectionId = id;
+  navLinks.forEach((link) => link.classList.remove("active"));
+  const activeLink = document.querySelector(`.section-nav a[href="#${id}"]`);
+  activeLink?.classList.add("active");
+}
+
 const storedTheme = localStorage.getItem("theme");
 const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)");
 const initialTheme = storedTheme || (prefersDark?.matches ? "dark" : "light");
@@ -161,12 +171,7 @@ if (sectionTargets.length && "IntersectionObserver" in window) {
 
       if (!dominantEntry) return;
       const id = dominantEntry.target.id;
-      const activeLink = document.querySelector(
-        `.section-nav a[href="#${id}"]`
-      );
-      if (!activeLink) return;
-      navLinks.forEach((link) => link.classList.remove("active"));
-      activeLink.classList.add("active");
+      setActiveLink(id);
     },
     {
       rootMargin: "-40% 0px -40% 0px",
@@ -176,3 +181,30 @@ if (sectionTargets.length && "IntersectionObserver" in window) {
 
   sectionTargets.forEach((section) => observer.observe(section));
 }
+
+function updateActiveSectionFromScroll() {
+  if (!sectionTargets.length) return;
+  const viewportAnchor = window.scrollY + window.innerHeight * 0.35;
+
+  let currentSection = sectionTargets[0];
+  sectionTargets.forEach((section) => {
+    const top = section.offsetTop;
+    if (viewportAnchor >= top - 12) {
+      currentSection = section;
+    }
+  });
+
+  setActiveLink(currentSection.id);
+}
+
+let scrollTicking = false;
+window.addEventListener("scroll", () => {
+  if (scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(() => {
+    updateActiveSectionFromScroll();
+    scrollTicking = false;
+  });
+});
+
+updateActiveSectionFromScroll();
