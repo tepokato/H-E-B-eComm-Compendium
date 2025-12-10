@@ -21,9 +21,9 @@ let activeSectionId = null;
 function setActiveLink(id) {
   if (!id || id === activeSectionId) return;
   activeSectionId = id;
-  navLinks.forEach((link) => link.classList.remove("active"));
-  const activeLink = document.querySelector(`.section-nav a[href="#${id}"]`);
-  activeLink?.classList.add("active");
+  navLinks.forEach((link) => {
+    link.classList.toggle("active", link.hash === `#${id}`);
+  });
 }
 
 const storedTheme = localStorage.getItem("theme");
