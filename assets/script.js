@@ -66,19 +66,19 @@ const timeOptions = { hour: "numeric", minute: "2-digit", hour12: true };
 const militaryTimeOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
 const dateOptions = { month: "2-digit", day: "2-digit", year: "numeric" };
 
-const centralTimeFormatter = new Intl.DateTimeFormat("en-US", {
+const LOCALE = "en-US";
+const commonDateTimeOptions = { timeZone: "America/Chicago" };
+const centralTimeFormatter = new Intl.DateTimeFormat(LOCALE, {
   ...timeOptions,
-  timeZone: "America/Chicago",
+  ...commonDateTimeOptions,
 });
-
-const centralMilitaryTimeFormatter = new Intl.DateTimeFormat("en-US", {
+const centralMilitaryTimeFormatter = new Intl.DateTimeFormat(LOCALE, {
   ...militaryTimeOptions,
-  timeZone: "America/Chicago",
+  ...commonDateTimeOptions,
 });
-
-const centralDateFormatter = new Intl.DateTimeFormat("en-US", {
+const centralDateFormatter = new Intl.DateTimeFormat(LOCALE, {
   ...dateOptions,
-  timeZone: "America/Chicago",
+  ...commonDateTimeOptions,
 });
 
 function updateClocks() {
