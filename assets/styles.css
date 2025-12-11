@@ -981,7 +981,7 @@ footer {
 
 @media (max-width: 720px) {
   :root {
-    --nav-offset: 122px;
+    --nav-offset: 96px; /* Header height on small screens */
     --nav-height: 56px;
   }
 
