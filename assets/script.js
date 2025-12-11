@@ -50,38 +50,42 @@ function applyTheme(theme, persist = false) {
 
 applyTheme(initialTheme);
 
+function syncThemeWithPreference(event) {
+  if (!localStorage.getItem("theme")) {
+    applyTheme(event.matches ? "dark" : "light");
+  }
+}
+
 if (prefersDark?.addEventListener) {
-  prefersDark.addEventListener("change", (event) => {
-    if (!localStorage.getItem("theme")) {
-      applyTheme(event.matches ? "dark" : "light");
-    }
-  });
+  prefersDark.addEventListener("change", syncThemeWithPreference);
 } else if (prefersDark?.addListener) {
-  prefersDark.addListener((event) => {
-    if (!localStorage.getItem("theme")) {
-      applyTheme(event.matches ? "dark" : "light");
-    }
-  });
+  prefersDark.addListener(syncThemeWithPreference);
 }
 
 const timeOptions = { hour: "numeric", minute: "2-digit", hour12: true };
 const militaryTimeOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
 const dateOptions = { month: "2-digit", day: "2-digit", year: "numeric" };
 
+const centralTimeFormatter = new Intl.DateTimeFormat("en-US", {
+  ...timeOptions,
+  timeZone: "America/Chicago",
+});
+
+const centralMilitaryTimeFormatter = new Intl.DateTimeFormat("en-US", {
+  ...militaryTimeOptions,
+  timeZone: "America/Chicago",
+});
+
+const centralDateFormatter = new Intl.DateTimeFormat("en-US", {
+  ...dateOptions,
+  timeZone: "America/Chicago",
+});
+
 function updateClocks() {
   const now = new Date();
-  centralTimeEl.textContent = new Intl.DateTimeFormat("en-US", {
-    ...timeOptions,
-    timeZone: "America/Chicago",
-  }).format(now);
-  centralMilitaryTimeEl.textContent = new Intl.DateTimeFormat("en-US", {
-    ...militaryTimeOptions,
-    timeZone: "America/Chicago",
-  }).format(now);
-  currentDateEl.textContent = new Intl.DateTimeFormat("en-US", {
-    ...dateOptions,
-    timeZone: "America/Chicago",
-  }).format(now);
+  centralTimeEl.textContent = centralTimeFormatter.format(now);
+  centralMilitaryTimeEl.textContent = centralMilitaryTimeFormatter.format(now);
+  currentDateEl.textContent = centralDateFormatter.format(now);
 }
 
 updateClocks();
@@ -113,6 +117,12 @@ function announceCopyStatus(message) {
   }, 10);
 }
 
+function resetCopyButtonLabel(button) {
+  window.setTimeout(() => {
+    button.textContent = "Copy";
+  }, 1200);
+}
+
 copyButtons.forEach((button) => {
   button.addEventListener("click", async () => {
     const text = button.getAttribute("data-copy");
@@ -122,16 +132,12 @@ copyButtons.forEach((button) => {
       await navigator.clipboard.writeText(text);
       button.textContent = "Copied";
       announceCopyStatus(`${text} copied to clipboard.`);
-      setTimeout(() => {
-        button.textContent = "Copy";
-      }, 1200);
+      resetCopyButtonLabel(button);
     } catch (error) {
       console.error("Copy failed", error);
       button.textContent = "Copy failed";
       announceCopyStatus("Copy failed. Please try again.");
-      setTimeout(() => {
-        button.textContent = "Copy";
-      }, 1200);
+      resetCopyButtonLabel(button);
     }
   });
 });
