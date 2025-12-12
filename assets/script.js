@@ -1,3 +1,5 @@
+// Cached DOM lookups for frequently accessed elements. Centralize here to keep
+// event handlers lightweight and prevent repeated queries as the page updates.
 const centralTimeEl = document.getElementById("central-time");
 const centralMilitaryTimeEl = document.getElementById("central-military-time");
 const currentDateEl = document.getElementById("current-date");
@@ -16,8 +18,11 @@ const sectionTargets = Array.from(navLinks)
   })
   .filter(Boolean);
 
+// Tracks the id of the currently highlighted nav section so we only update the
+// UI when a new section becomes dominant.
 let activeSectionId = null;
 
+// Highlight the nav link that corresponds to the currently visible section.
 function setActiveLink(id) {
   if (!id || id === activeSectionId) return;
   activeSectionId = id;
@@ -27,9 +32,13 @@ function setActiveLink(id) {
 }
 
 const storedTheme = localStorage.getItem("theme");
+// System preference is used only when the user has not manually chosen a
+// theme, keeping the page aligned with OS-level settings by default.
 const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)");
 const initialTheme = storedTheme || (prefersDark?.matches ? "dark" : "light");
 
+// Syncs the theme toggle button text/icon with the active theme so screen
+// readers and visual users receive accurate state cues.
 function updateThemeToggle(isDark) {
   if (!themeToggleButton || !themeToggleText || !themeToggleIcon) return;
   themeToggleButton.setAttribute("aria-pressed", String(isDark));
@@ -37,6 +46,8 @@ function updateThemeToggle(isDark) {
   themeToggleIcon.textContent = isDark ? "🌞" : "🌙";
 }
 
+// Applies the theme classes and, if requested, persists the choice in storage
+// for the next visit.
 function applyTheme(theme, persist = false) {
   const isDark = theme === "dark";
   document.body.classList.toggle("theme-dark", isDark);
@@ -48,8 +59,11 @@ function applyTheme(theme, persist = false) {
   }
 }
 
+// Start with the preferred theme and mirror any OS preference changes unless a
+// manual selection is saved.
 applyTheme(initialTheme);
 
+// Respond to OS-level theme changes when the user hasn't set a preference.
 function syncThemeWithPreference(event) {
   if (!localStorage.getItem("theme")) {
     applyTheme(event.matches ? "dark" : "light");
@@ -62,6 +76,8 @@ if (prefersDark?.addEventListener) {
   prefersDark.addListener(syncThemeWithPreference);
 }
 
+// Shared date/time formatter pieces to avoid recreating Intl instances for each
+// tick of the clock.
 const timeOptions = { hour: "numeric", minute: "2-digit", hour12: true };
 const militaryTimeOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
 const dateOptions = { month: "2-digit", day: "2-digit", year: "numeric" };
@@ -81,6 +97,8 @@ const centralDateFormatter = new Intl.DateTimeFormat(LOCALE, {
   ...commonDateTimeOptions,
 });
 
+// Refreshes the human-readable and military clocks plus the date display. The
+// interval runs every 30 seconds to keep the UI fresh without extra overhead.
 function updateClocks() {
   const now = new Date();
   centralTimeEl.textContent = centralTimeFormatter.format(now);
@@ -91,6 +109,8 @@ function updateClocks() {
 updateClocks();
 setInterval(updateClocks, 30000);
 
+// Show the back-to-top button only when scrolling past the hero content so it
+// remains out of the way near the top of the page.
 function toggleBackToTop() {
   if (!backToTopButton) return;
   if (window.scrollY > 120) {
@@ -109,6 +129,8 @@ if (backToTopButton) {
 window.addEventListener("scroll", toggleBackToTop);
 toggleBackToTop();
 
+// Announces copy feedback for screen readers by temporarily clearing and then
+// re-inserting status text, ensuring the message is always announced.
 function announceCopyStatus(message) {
   if (!copyStatus) return;
   copyStatus.textContent = "";
@@ -117,12 +139,16 @@ function announceCopyStatus(message) {
   }, 10);
 }
 
+// Resets the button label after a short delay so repeated copies stay clear to
+// the user without requiring manual refresh.
 function resetCopyButtonLabel(button) {
   window.setTimeout(() => {
     button.textContent = "Copy";
   }, 1200);
 }
 
+// Wire up copy-to-clipboard on every quick action button. Errors fall back to a
+// visible message so partners know to try again.
 copyButtons.forEach((button) => {
   button.addEventListener("click", async () => {
     const text = button.getAttribute("data-copy");
@@ -142,6 +168,8 @@ copyButtons.forEach((button) => {
   });
 });
 
+// Smooth scrolling for in-page navigation so moving between sections feels
+// intentional and keeps the active state logic in sync.
 navLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
     const hash = link.getAttribute("href");
@@ -153,6 +181,8 @@ navLinks.forEach((link) => {
   });
 });
 
+// Theme toggling: persist user choice and re-run the same apply logic used at
+// initialization.
 if (themeToggleButton) {
   themeToggleButton.addEventListener("click", () => {
     const nextTheme = document.body.classList.contains("theme-dark")
@@ -162,6 +192,8 @@ if (themeToggleButton) {
   });
 }
 
+// Keep the navigation chips in sync with the section currently in view. Prefer
+// IntersectionObserver and fall back to a scroll-based approach when needed.
 if (sectionTargets.length) {
   const firstSectionId = sectionTargets[0].id;
   setActiveLink(firstSectionId);

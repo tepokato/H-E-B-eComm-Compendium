@@ -1,3 +1,5 @@
+/* Light theme tokens: keep shared palette adjustments centralized here so
+ * switching themes only requires changing these values. */
 :root {
   --heb-red: #e3122c;
   --blue: #0c66c2;
@@ -23,6 +25,8 @@
   --section-label-offset: calc(var(--nav-offset) + var(--nav-height));
 }
 
+/* Dark theme overrides mirror the light tokens above. Keep variables grouped
+ * here to minimize selector churn when adjusting color balance. */
 body.theme-dark {
   --heb-red: #f87171;
   --blue: #93c5fd;
@@ -46,10 +50,13 @@ body.theme-dark {
   color-scheme: dark;
 }
 
+/* Global reset to prevent padding/margin surprises when adding new components. */
 * {
   box-sizing: border-box;
 }
 
+/* Base typography and page background. Keep the font-family list aligned with
+ * the loaded Google font to avoid layout shifts. */
 body {
   margin: 0;
   font-family: "Inter", system-ui, -apple-system, sans-serif;
@@ -83,6 +90,7 @@ header {
   z-index: 2;
 }
 
+/* Sticky page-level navigation chips pinned below the header. */
 .section-nav {
   position: sticky;
   top: var(--nav-offset);
@@ -142,6 +150,7 @@ header {
   transition: filter 0.2s ease;
 }
 
+/* Main layout container controlling page width and spacing. */
 main {
   max-width: 1220px;
   margin: 0 auto;
@@ -151,6 +160,7 @@ main {
   gap: 18px;
 }
 
+/* Responsive two-column grid that stacks into a single column on narrow viewports. */
 .content-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
