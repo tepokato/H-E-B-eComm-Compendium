@@ -162,55 +162,66 @@ if (themeToggleButton) {
   });
 }
 
-if (sectionTargets.length && "IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const visibleEntries = entries.filter((entry) => entry.isIntersecting);
-      if (!visibleEntries.length) return;
+if (sectionTargets.length) {
+  const firstSectionId = sectionTargets[0].id;
+  setActiveLink(firstSectionId);
 
-      const dominantEntry = visibleEntries.reduce((current, candidate) => {
-        if (!current) return candidate;
-        return candidate.intersectionRatio > current.intersectionRatio
-          ? candidate
-          : current;
-      }, null);
+  if ("IntersectionObserver" in window) {
+    const sectionVisibility = new Map(
+      sectionTargets.map((section) => [section.id, 0])
+    );
 
-      if (!dominantEntry) return;
-      const id = dominantEntry.target.id;
-      setActiveLink(id);
-    },
-    {
-      rootMargin: "-40% 0px -40% 0px",
-      threshold: 0.25,
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const ratio = entry.isIntersecting ? entry.intersectionRatio : 0;
+          sectionVisibility.set(entry.target.id, ratio);
+        });
+
+        let bestId = firstSectionId;
+        let bestRatio = 0;
+
+        sectionVisibility.forEach((ratio, id) => {
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            bestId = id;
+          }
+        });
+
+        setActiveLink(bestId);
+      },
+      {
+        rootMargin: "-40% 0px -40% 0px",
+        threshold: [0, 0.15, 0.35, 0.5, 0.75],
+      }
+    );
+
+    sectionTargets.forEach((section) => observer.observe(section));
+  } else {
+    function updateActiveSectionFromScroll() {
+      const viewportAnchor = window.scrollY + window.innerHeight * 0.35;
+
+      let currentSection = sectionTargets[0];
+      sectionTargets.forEach((section) => {
+        const top = section.offsetTop;
+        if (viewportAnchor >= top - 12) {
+          currentSection = section;
+        }
+      });
+
+      setActiveLink(currentSection.id);
     }
-  );
 
-  sectionTargets.forEach((section) => observer.observe(section));
-}
+    let scrollTicking = false;
+    window.addEventListener("scroll", () => {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        updateActiveSectionFromScroll();
+        scrollTicking = false;
+      });
+    });
 
-function updateActiveSectionFromScroll() {
-  if (!sectionTargets.length) return;
-  const viewportAnchor = window.scrollY + window.innerHeight * 0.35;
-
-  let currentSection = sectionTargets[0];
-  sectionTargets.forEach((section) => {
-    const top = section.offsetTop;
-    if (viewportAnchor >= top - 12) {
-      currentSection = section;
-    }
-  });
-
-  setActiveLink(currentSection.id);
-}
-
-let scrollTicking = false;
-window.addEventListener("scroll", () => {
-  if (scrollTicking) return;
-  scrollTicking = true;
-  requestAnimationFrame(() => {
     updateActiveSectionFromScroll();
-    scrollTicking = false;
-  });
-});
-
-updateActiveSectionFromScroll();
+  }
+}
