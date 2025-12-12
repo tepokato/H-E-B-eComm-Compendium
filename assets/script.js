@@ -198,11 +198,25 @@ if (sectionTargets.length) {
   const firstSectionId = sectionTargets[0].id;
   setActiveLink(firstSectionId);
 
+  function getSectionFromScrollAnchor() {
+    const viewportAnchor = window.scrollY + window.innerHeight * 0.35;
+    return sectionTargets.reduce((current, section) => {
+      if (viewportAnchor >= section.offsetTop - 12) {
+        return section;
+      }
+      return current;
+    }, sectionTargets[0]);
+  }
+
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
       (entries) => {
         const visibleEntries = entries.filter((entry) => entry.isIntersecting);
-        if (!visibleEntries.length) return;
+        if (!visibleEntries.length) {
+          const currentSection = getSectionFromScrollAnchor();
+          if (currentSection) setActiveLink(currentSection.id);
+          return;
+        }
 
         const dominantEntry = visibleEntries.reduce((current, candidate) => {
           if (!current) return candidate;
@@ -216,25 +230,16 @@ if (sectionTargets.length) {
         setActiveLink(id);
       },
       {
-        rootMargin: "-40% 0px -40% 0px",
-        threshold: 0.25,
+        rootMargin: "-20% 0px -45% 0px",
+        threshold: 0.15,
       }
     );
 
     sectionTargets.forEach((section) => observer.observe(section));
   } else {
     function updateActiveSectionFromScroll() {
-      const viewportAnchor = window.scrollY + window.innerHeight * 0.35;
-
-      let currentSection = sectionTargets[0];
-      sectionTargets.forEach((section) => {
-        const top = section.offsetTop;
-        if (viewportAnchor >= top - 12) {
-          currentSection = section;
-        }
-      });
-
-      setActiveLink(currentSection.id);
+      const currentSection = getSectionFromScrollAnchor();
+      if (currentSection) setActiveLink(currentSection.id);
     }
 
     let scrollTicking = false;
