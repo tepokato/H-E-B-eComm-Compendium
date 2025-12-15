@@ -472,7 +472,7 @@ a {
 }
 
 .tool-image {
-  width: 75%;
+  width: 100%;
   max-width: 390px;
   height: auto;
   display: block;
