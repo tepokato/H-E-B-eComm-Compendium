@@ -189,7 +189,7 @@ main {
 }
 
 .military-time-card {
-  border: 1.5px solid var(--border);
+  border: 2px solid var(--border);
 }
 
 .section-pill.digital {
