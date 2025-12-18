@@ -1,6 +1,8 @@
 # H-E-B-eComm-Compendium
 
-H‑E‑B eComm Compendium is a single-page hub that keeps eCommerce partners focused on their shift. The site bundles the tools, contacts, and references partners need into one organized view:
+H‑E‑B eComm Compendium is a single-page hub that keeps eCommerce partners focused on their shift. The site bundles the tools, contacts, and references partners need into one organized view.
+
+## Key Features
 
 - **Apps we use:** Launch core tools by workstream (all partners, curbside/delivery/3PSD, digital coupons) with quick context about when to use them.
 - **Shift resources:** A military time conversion chart, links to Chat H‑E‑B, and a downloadable digital coupon transaction ID helper.
