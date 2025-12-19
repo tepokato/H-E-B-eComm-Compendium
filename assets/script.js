@@ -43,7 +43,7 @@ function updateThemeToggle(isDark) {
   if (!themeToggleButton || !themeToggleText || !themeToggleIcon) return;
   themeToggleButton.setAttribute("aria-pressed", String(isDark));
   themeToggleText.textContent = isDark ? "Light mode" : "Dark mode";
-  themeToggleIcon.textContent = isDark ? "🌞" : "🌙";
+  themeToggleIcon.textContent = isDark ? "light_mode" : "dark_mode";
 }
 
 // Applies the theme classes and, if requested, persists the choice in storage
