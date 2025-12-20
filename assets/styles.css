@@ -907,15 +907,22 @@ footer {
 }
 
 .tip summary::after {
-  content: "⌄";
-  font-weight: 900;
-  color: var(--muted);
+  content: "Expand tip ▾";
   margin-left: auto;
-  transition: transform 0.12s ease;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--chip-bg);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--muted);
 }
 
 .tip[open] summary::after {
-  transform: rotate(180deg);
+  content: "Collapse tip ▴";
+  color: var(--text);
+  border-color: #d1d5db;
+  background: #f8fafc;
 }
 
 .tip-body {
