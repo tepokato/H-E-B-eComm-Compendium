@@ -30,7 +30,7 @@ function setActiveLink(id) {
   navLinks.forEach((link) => {
     const isActive = link.hash === `#${id}`;
     link.classList.toggle("active", isActive);
-    link.setAttribute("aria-current", isActive ? "true" : "false");
+isActive ? link.setAttribute("aria-current", "location") : link.removeAttribute("aria-current");
   });
 }
 
