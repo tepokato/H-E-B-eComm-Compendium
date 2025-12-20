@@ -718,9 +718,11 @@ footer {
   display: none;
 }
 
+
 .accordion summary::after {
-  content: "⌄";
-  font-weight: 900;
+  content: "expand_more";
+  font-family: "Material Symbols Outlined";
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
   color: var(--muted);
   margin-left: auto;
   transition: transform 0.12s ease;
@@ -906,9 +908,11 @@ footer {
   display: none;
 }
 
+
 .tip summary::after {
-  content: "⌄";
-  font-weight: 900;
+  content: "expand_more";
+  font-family: "Material Symbols Outlined";
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
   color: var(--muted);
   margin-left: auto;
   transition: transform 0.12s ease;
