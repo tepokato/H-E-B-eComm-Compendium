@@ -10,6 +10,7 @@ const navLinks = document.querySelectorAll(".section-nav a[href^='#']");
 const themeToggleButton = document.getElementById("theme-toggle");
 const themeToggleText = themeToggleButton?.querySelector(".theme-text");
 const themeToggleIcon = themeToggleButton?.querySelector(".theme-icon");
+const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)");
 const sectionTargets = Array.from(navLinks)
   .map((link) => {
     const hash = link.getAttribute("href");
@@ -27,7 +28,9 @@ function setActiveLink(id) {
   if (!id || id === activeSectionId) return;
   activeSectionId = id;
   navLinks.forEach((link) => {
-    link.classList.toggle("active", link.hash === `#${id}`);
+    const isActive = link.hash === `#${id}`;
+    link.classList.toggle("active", isActive);
+isActive ? link.setAttribute("aria-current", "location") : link.removeAttribute("aria-current");
   });
 }
 
@@ -120,9 +123,13 @@ function toggleBackToTop() {
   }
 }
 
+function getScrollBehavior() {
+  return prefersReducedMotion?.matches ? "auto" : "smooth";
+}
+
 if (backToTopButton) {
   backToTopButton.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: getScrollBehavior() });
   });
 }
 
@@ -177,7 +184,7 @@ navLinks.forEach((link) => {
     const target = document.querySelector(hash);
     if (!target) return;
     event.preventDefault();
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    target.scrollIntoView({ behavior: getScrollBehavior(), block: "start" });
   });
 });
 
