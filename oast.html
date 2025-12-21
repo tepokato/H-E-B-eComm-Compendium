@@ -1,1 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OAST Partner Guide | H-E-B eComm Compendium</title>
+  <link rel="icon" type="image/png" href="assets/heb-ecomm-compendium.png" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400..700,0..1,-50..200&display=swap"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <div class="brand">
+      <img src="assets/heb-ecomm-compendium.png" alt="H-E-B eComm Compendium logo" class="brand-logo" />
+      <div>
+        <div>eComm Compendium</div>
+        <div style="font-size: 14px; color: var(--muted)">Online Account Services Team hub</div>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="time-chip condensed-time">
+        <span class="chip-label">Central Time</span>
+        <span class="chip-value" id="central-time">--</span>
+        <span aria-hidden="true" class="chip-divider">•</span>
+        <span class="chip-label">Military</span>
+        <span class="chip-value" id="central-military-time">--</span>
+        <span aria-hidden="true" class="chip-divider">•</span>
+        <span class="chip-label">Today</span>
+        <span class="chip-value" id="current-date">--/--/----</span>
+      </div>
+    </div>
+  </header>
 
+  <div id="copy-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <nav class="section-nav" aria-label="Page navigation">
+    <a href="#overview" aria-label="Overview">
+      <span class="material-symbols-outlined" aria-hidden="true">home</span>
+      <span class="nav-label">Overview</span>
+    </a>
+    <a href="#call-guides" aria-label="Call guides">
+      <span class="material-symbols-outlined" aria-hidden="true">support_agent</span>
+      <span class="nav-label">Call guides</span>
+    </a>
+    <a href="#tools" aria-label="Tools and shortcuts">
+      <span class="material-symbols-outlined" aria-hidden="true">build</span>
+      <span class="nav-label">Tools</span>
+    </a>
+    <a href="#knowledge" aria-label="Knowledge center">
+      <span class="material-symbols-outlined" aria-hidden="true">library_books</span>
+      <span class="nav-label">Knowledge</span>
+    </a>
+  </nav>
+
+  <main id="main-content">
+    <section id="overview" class="section-block">
+      <div class="section-header">
+        <div class="section-pill support">
+          <span class="material-symbols-outlined" aria-hidden="true">home</span>
+          Overview
+        </div>
+      </div>
+      <article class="card hero-card">
+        <h1 class="card-title">Online Account Services Team (OAST)</h1>
+        <p>
+          OAST partners help customers navigate heb.com and the My H-E-B app—everything from account access to payment and
+          checkout support.
+        </p>
+        <div class="tip-groups">
+          <div class="tip-group">
+            <div class="tip-group-header all-partners">
+              <h4>Mission checklist</h4>
+            </div>
+            <ul class="stacked-list">
+              <li>Confirm identity with two data points before reviewing account details.</li>
+              <li>Document device type (web/app), browser/app version, and screenshots when possible.</li>
+              <li>Use plain-language steps and stay on the line while customers test solutions.</li>
+            </ul>
+          </div>
+          <div class="tip-group">
+            <div class="tip-group-header store-teams">
+              <h4>Common requests</h4>
+            </div>
+            <ul class="stacked-list">
+              <li>Password resets or MFA troubleshooting on heb.com and My H-E-B.</li>
+              <li>Account recovery when login is blocked or email is outdated.</li>
+              <li>Payment method updates, wallet errors, or digital coupon issues.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="chip-row">
+          <a class="chip-button" href="index.html">Back to main compendium</a>
+          <a class="chip-button primary" href="#call-guides">Jump to call guides</a>
+        </div>
+      </article>
+    </section>
+
+    <section id="call-guides" class="section-block">
+      <div class="section-header">
+        <div class="section-pill">
+          <span class="material-symbols-outlined" aria-hidden="true">support_agent</span>
+          Call guides
+        </div>
+      </div>
+      <div class="content-grid tools-grid">
+        <div class="column">
+          <article class="card">
+            <h2 class="card-title">Access & authentication</h2>
+            <ol class="stacked-list">
+              <li>Verify customer with name + phone or email tied to the profile.</li>
+              <li>Check known outages in Salesforce/CSR before troubleshooting.</li>
+              <li>For password or MFA issues, send <strong>Okta self-service</strong> reset link and confirm receipt.</li>
+              <li>Walk through browser/app cache clear, then retry login with a fresh One-Time PIN.</li>
+              <li>Escalate to Level 2 if repeated MFA failures persist after cache clear and device swap.</li>
+            </ol>
+          </article>
+        </div>
+        <div class="column">
+          <article class="card">
+            <h2 class="card-title">Ordering & checkout</h2>
+            <ol class="stacked-list">
+              <li>Identify whether the customer is using the app or web and confirm version/build.</li>
+              <li>Have the customer toggle Wi-Fi/cellular or try an alternate browser (Chrome/Edge).</li>
+              <li>For payment declines, confirm card expiration, ZIP, and available balance; retry after removing/re-adding card.</li>
+              <li>For digital coupon application issues, reclip and verify eligibility in CSR before issuing credit.</li>
+              <li>Escalate with screenshots, steps to reproduce, and timestamps if the error persists.</li>
+            </ol>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools" class="section-block">
+      <div class="section-header">
+        <div class="section-pill tips">
+          <span class="material-symbols-outlined" aria-hidden="true">build</span>
+          Tools & shortcuts
+        </div>
+      </div>
+      <div class="content-grid tools-grid">
+        <div class="column">
+          <article class="card">
+            <h2 class="card-title">Quick links</h2>
+            <ul class="stacked-list">
+              <li><a href="https://csr.retail.prod.heb.com/hebtools/CSRLogin.jsp" target="_blank" rel="noopener noreferrer">CSR login</a></li>
+              <li><a href="https://heb.lightning.force.com/lightning/page/home" target="_blank" rel="noopener noreferrer">Salesforce</a></li>
+              <li><a href="https://recovery.heb.com" target="_blank" rel="noopener noreferrer">Okta self-service reset</a></li>
+              <li><a href="https://help.heb.com/s/?language=en_US" target="_blank" rel="noopener noreferrer">Customer help center</a></li>
+            </ul>
+          </article>
+        </div>
+        <div class="column">
+          <article class="card">
+            <h2 class="card-title">In-call reminders</h2>
+            <ul class="stacked-list">
+              <li>Keep the customer on the line while testing; narrate each step.</li>
+              <li>Log device, OS, and app/browser version in the case notes.</li>
+              <li>Capture full error text or code for faster escalations.</li>
+              <li>Confirm resolution and next steps before ending the call.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="knowledge" class="section-block">
+      <div class="section-header">
+        <div class="section-pill digital">
+          <span class="material-symbols-outlined" aria-hidden="true">library_books</span>
+          Knowledge center
+        </div>
+      </div>
+      <article class="card tips-card">
+        <div class="tip-groups">
+          <div class="tip-group">
+            <div class="tip-group-header contact-center">
+              <h4>Documentation</h4>
+            </div>
+            <div class="tip-list">
+              <details class="tip" open>
+                <summary>
+                  <span class="tip-title">Account recovery checklist</span>
+                </summary>
+                <div class="tip-body">
+                  <ol>
+                    <li>Validate identity with two unique data points.</li>
+                    <li>Send password reset or MFA re-enrollment link via verified email/phone.</li>
+                    <li>Ask the customer to retry in a private/incognito window.</li>
+                    <li>Remove stale sessions in CSR if sign-in loops continue.</li>
+                  </ol>
+                </div>
+              </details>
+              <details class="tip">
+                <summary>
+                  <span class="tip-title">Payment and wallet stability</span>
+                </summary>
+                <div class="tip-body">
+                  <ul>
+                    <li>Re-add the payment method after confirming billing ZIP and CVV.</li>
+                    <li>Advise customers to avoid VPNs/ad-blockers during checkout.</li>
+                    <li>Have the customer refresh the cart, then place a fresh test order.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="tip-group">
+            <div class="tip-group-header coupons">
+              <h4>Digital coupons</h4>
+            </div>
+            <div class="tip-list">
+              <details class="tip">
+                <summary>
+                  <span class="tip-title">Coupon troubleshooting</span>
+                </summary>
+                <div class="tip-body">
+                  <ol>
+                    <li>Confirm coupon eligibility and clip status in CSR.</li>
+                    <li>Have the customer reclip and refresh the cart or app session.</li>
+                    <li>If not applying, issue in-store credit per policy and document in the case.</li>
+                  </ol>
+                </div>
+              </details>
+              <details class="tip">
+                <summary>
+                  <span class="tip-title">Escalation snapshot</span>
+                </summary>
+                <div class="tip-body">
+                  <ul>
+                    <li>Include customer ID, device type, app/web version, and steps to reproduce.</li>
+                    <li>Add timestamp, order number (if available), and full error text.</li>
+                    <li>Attach screenshots before sending to Level 2.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div class="footer-bar" aria-label="Page controls">
+    <div class="footer-bar-inner">
+      <a class="chip-button" href="index.html">Main compendium</a>
+      <button id="theme-toggle" class="chip-button theme-toggle" type="button" aria-pressed="false">
+        <span class="theme-icon material-symbols-outlined" aria-hidden="true">dark_mode</span>
+        <span class="theme-text">Dark mode</span>
+      </button>
+    </div>
+  </div>
+
+  <footer>
+    H‑E‑B eComm Compendium — OAST resources are for partner training and customer support readiness.
+  </footer>
+
+  <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">
+    <span class="chevron material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
