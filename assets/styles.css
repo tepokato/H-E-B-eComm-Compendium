@@ -250,6 +250,38 @@ main {
   gap: 18px;
 }
 
+.under-construction-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.under-construction-page main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 22px;
+}
+
+.under-construction-page .section-block {
+  width: 100%;
+  max-width: 720px;
+  align-items: center;
+}
+
+.under-construction-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.under-construction-card .contact-actions {
+  justify-content: center;
+}
+
 /* Responsive two-column grid that stacks into a single column on narrow viewports. */
 .content-grid {
   display: grid;
@@ -1126,6 +1158,10 @@ footer {
     gap: 16px;
   }
 
+  .under-construction-page main {
+    padding: 28px 18px;
+  }
+
   .content-grid {
     grid-template-columns: 1fr;
     gap: 18px;
@@ -1194,6 +1230,10 @@ footer {
   main {
     padding: 14px;
     gap: 14px;
+  }
+
+  .under-construction-page main {
+    padding: 22px 14px;
   }
 
   .card {
