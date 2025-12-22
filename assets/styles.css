@@ -663,10 +663,23 @@ a {
   border-color: #d1d5db;
 }
 
+.chip-button.primary:hover,
+.chip-button.primary:focus-visible {
+  border-color: #7f1d1d;
+  box-shadow: 0 12px 26px rgba(227, 18, 44, 0.32);
+}
+
+.chip-button.secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--accent-sky-strong);
+}
+
 .chip-button.primary {
-  background: #eef2ff;
-  color: #312e81;
-  border-color: #e0e7ff;
+  background: var(--heb-red);
+  color: #ffffff;
+  border-color: #b91c1c;
+  box-shadow: 0 10px 24px rgba(227, 18, 44, 0.25);
 }
 
 .chip-button:active {
@@ -1032,8 +1045,14 @@ footer {
 }
 
 .theme-dark .chip-button.primary {
-  background: var(--accent-sky-light);
-  color: var(--accent-sky);
+  background: var(--heb-red);
+  color: #ffffff;
+  border-color: #fb7185;
+}
+
+.theme-dark .chip-button.secondary {
+  background: transparent;
+  color: var(--text);
   border-color: var(--accent-sky-border);
 }
 
