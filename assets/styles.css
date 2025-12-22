@@ -359,13 +359,6 @@ main {
 .section-block .section-header {
   position: relative;
   z-index: 0;
-  padding: 8px 10px;
-  margin: 0 -2px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 14px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(10px);
 }
 
 .section-header {
