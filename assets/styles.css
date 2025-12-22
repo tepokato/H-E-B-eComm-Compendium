@@ -1215,8 +1215,8 @@ footer {
     top: var(--section-label-offset);
     padding: 10px 12px;
     margin: 0 -4px;
-    background: linear-gradient(180deg, var(--bg), var(--card));
-    border-bottom: 1px solid var(--border);
+    background: none;
+    border-bottom: none;
     z-index: 1;
   }
 
