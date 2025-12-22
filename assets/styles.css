@@ -348,17 +348,12 @@ main {
   border-radius: 18px;
   border: 1px solid var(--section-band-border);
   box-shadow: var(--section-band-shadow);
-  z-index: 0;
+  z-index: -1;
   opacity: 0.9;
 }
 
 .section-block:nth-of-type(even)::before {
   background: linear-gradient(180deg, var(--section-band-b), var(--section-band-a));
-}
-
-.section-block > * {
-  position: relative;
-  z-index: 1;
 }
 
 .section-block .section-header {
