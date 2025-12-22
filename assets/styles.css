@@ -1215,8 +1215,11 @@ footer {
     top: var(--section-label-offset);
     padding: 10px 12px;
     margin: 0 -4px;
-    background: var(--bg);
-    border-bottom: none;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+    backdrop-filter: blur(10px);
     z-index: 1;
   }
 
