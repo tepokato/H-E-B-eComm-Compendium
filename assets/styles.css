@@ -171,6 +171,43 @@ header {
   position: sticky;
   top: 0;
   z-index: 2;
+  flex-wrap: wrap;
+}
+
+.header-search {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  flex: 1 1 320px;
+  max-width: 520px;
+}
+
+.header-search .material-symbols-outlined {
+  color: var(--muted);
+  font-size: 20px;
+}
+
+.header-search input {
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  flex: 1;
+  min-width: 140px;
+  outline: none;
+}
+
+.header-search input::placeholder {
+  color: var(--muted);
+}
+
+.header-search .search-button {
+  padding: 6px 14px;
+  font-size: 14px;
 }
 
 /* Sticky page-level navigation chips pinned below the header. */
