@@ -80,13 +80,35 @@ if (prefersDark?.addEventListener) {
   prefersDark.addListener(syncThemeWithPreference);
 }
 
-function updateVisitCounter() {
+async function updateVisitCounter() {
   if (!visitCountEl) return;
   const storageKey = "visitCount";
+  const ipStorageKey = "visitCountIp";
   const storedCount = Number.parseInt(localStorage.getItem(storageKey) ?? "0", 10);
-  const nextCount = Number.isNaN(storedCount) ? 1 : storedCount + 1;
-  localStorage.setItem(storageKey, String(nextCount));
-  visitCountEl.textContent = nextCount.toLocaleString("en-US");
+  const safeStoredCount = Number.isNaN(storedCount) ? 0 : storedCount;
+
+  visitCountEl.textContent = safeStoredCount.toLocaleString("en-US");
+
+  try {
+    const response = await fetch("https://api.ipify.org?format=json");
+    if (!response.ok) return;
+    const data = await response.json();
+    const currentIp = typeof data?.ip === "string" ? data.ip : null;
+    if (!currentIp) return;
+
+    const lastIp = localStorage.getItem(ipStorageKey);
+    if (lastIp === currentIp) {
+      visitCountEl.textContent = safeStoredCount.toLocaleString("en-US");
+      return;
+    }
+
+    const nextCount = safeStoredCount + 1;
+    localStorage.setItem(storageKey, String(nextCount));
+    localStorage.setItem(ipStorageKey, currentIp);
+    visitCountEl.textContent = nextCount.toLocaleString("en-US");
+  } catch (error) {
+    console.error("Unable to update visit counter", error);
+  }
 }
 
 // Shared date/time formatter pieces to avoid recreating Intl instances for each
