@@ -11,6 +11,9 @@ const themeToggleButton = document.getElementById("theme-toggle");
 const themeToggleText = themeToggleButton?.querySelector(".theme-text");
 const themeToggleIcon = themeToggleButton?.querySelector(".theme-icon");
 const visitCountEl = document.getElementById("visit-count");
+const searchForm = document.getElementById("site-search");
+const searchInput = document.getElementById("site-search-input");
+const searchStatus = document.getElementById("search-status");
 const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)");
 const sectionTargets = Array.from(navLinks)
   .map((link) => {
@@ -23,6 +26,25 @@ const sectionTargets = Array.from(navLinks)
 // Tracks the id of the currently highlighted nav section so we only update the
 // UI when a new section becomes dominant.
 let activeSectionId = null;
+
+const searchIndex = Array.from(
+  document.querySelectorAll("section[data-search-keywords]")
+).map((section) => {
+  const label =
+    section.dataset.searchLabel?.trim() ||
+    section.querySelector(".section-pill")?.textContent?.trim() ||
+    section.id;
+  const keywords = section.dataset.searchKeywords?.trim() || "";
+  const combined = `${label} ${keywords}`.toLowerCase();
+  return {
+    id: section.id,
+    label,
+    keywords,
+    combined,
+    tokens: combined.match(/[a-z0-9]+/g) ?? [],
+    element: section,
+  };
+});
 
 // Highlight the nav link that corresponds to the currently visible section.
 function setActiveLink(id) {
@@ -160,6 +182,56 @@ function getScrollBehavior() {
   return prefersReducedMotion?.matches ? "auto" : "smooth";
 }
 
+function announceSearchStatus(message) {
+  if (!searchStatus) return;
+  searchStatus.textContent = "";
+  window.setTimeout(() => {
+    searchStatus.textContent = message;
+  }, 10);
+}
+
+function getSearchTerms(query) {
+  return query.toLowerCase().match(/[a-z0-9]+/g) ?? [];
+}
+
+function scoreSearchItem(item, terms, rawQuery) {
+  if (!terms.length) return 0;
+  const labelLower = item.label.toLowerCase();
+  const keywordLower = item.keywords.toLowerCase();
+  const rawLower = rawQuery.toLowerCase();
+  let score = 0;
+
+  if (labelLower.includes(rawLower)) score += 8;
+  if (keywordLower.includes(rawLower)) score += 5;
+
+  terms.forEach((term) => {
+    if (labelLower.includes(term)) score += 6;
+    if (keywordLower.includes(term)) score += 4;
+    if (item.tokens.some((token) => token.startsWith(term))) score += 2;
+    if (item.tokens.some((token) => token.includes(term))) score += 1;
+  });
+
+  return score;
+}
+
+function findBestSearchMatch(query) {
+  const terms = getSearchTerms(query);
+  if (!terms.length) return null;
+  let bestMatch = null;
+  let bestScore = 0;
+
+  searchIndex.forEach((item) => {
+    const score = scoreSearchItem(item, terms, query);
+    if (score > bestScore) {
+      bestScore = score;
+      bestMatch = item;
+    }
+  });
+
+  if (!bestMatch || bestScore < 3) return null;
+  return bestMatch;
+}
+
 if (backToTopButton) {
   backToTopButton.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: getScrollBehavior() });
@@ -220,6 +292,28 @@ navLinks.forEach((link) => {
     target.scrollIntoView({ behavior: getScrollBehavior(), block: "start" });
   });
 });
+
+if (searchForm && searchInput) {
+  searchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const query = searchInput.value.trim();
+    if (!query) {
+      announceSearchStatus("Enter a search term to jump to a section.");
+      searchInput.focus();
+      return;
+    }
+
+    const match = findBestSearchMatch(query);
+    if (!match) {
+      announceSearchStatus(`No section matched "${query}". Try a different keyword.`);
+      return;
+    }
+
+    match.element.scrollIntoView({ behavior: getScrollBehavior(), block: "start" });
+    setActiveLink(match.id);
+    announceSearchStatus(`Jumped to ${match.label}.`);
+  });
+}
 
 // Theme toggling: persist user choice and re-run the same apply logic used at
 // initialization.
