@@ -19,18 +19,6 @@
       <img src="assets/heb-ecomm-compendium.png" alt="H-E-B eComm Compendium logo" class="brand-logo" />
       <div>eComm Compendium</div>
     </div>
-    <form class="header-search" id="site-search" role="search" aria-label="Search for a section">
-      <span class="material-symbols-outlined" aria-hidden="true">search</span>
-      <label class="sr-only" for="site-search-input">Search the compendium</label>
-      <input
-        id="site-search-input"
-        name="site-search"
-        type="search"
-        placeholder="Search sections (e.g., clock in, curbside, coupons)"
-        autocomplete="off"
-      />
-      <button type="submit" class="chip-button primary search-button">Go</button>
-    </form>
     <div class="header-info">
       <div class="time-chip condensed-time">
         <span class="chip-label">Central Time</span>
@@ -46,7 +34,6 @@
   </header>
 
   <div id="copy-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
-  <div id="search-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <nav class="section-nav" aria-label="Page navigation">
     <a href="#daily-checklist" aria-label="Apps we use">
@@ -68,13 +55,7 @@
   </nav>
 
   <main id="main-content">
-    <!-- Search notes: Apps we use - logile, clock in, salesforce, CSR, SALT, IT tickets, Okta/nametag, curbside tools. -->
-    <section
-      id="daily-checklist"
-      class="section-block"
-      data-search-label="Apps we use"
-      data-search-keywords="apps logile clock in salesforce csr salt it ticket nametag okta portals login curbside delivery 3psd coms fast favor doordash digital coupons logix"
-    >
+    <section id="daily-checklist" class="section-block">
       <div class="section-header">
         <div class="section-pill checklist">
           <span class="material-symbols-outlined" aria-hidden="true">apps</span>
@@ -136,13 +117,7 @@
         </article>
     </section>
 
-    <!-- Search notes: Tools - military time chart, chat H-E-B, digital coupon transaction ID helper. -->
-    <section
-      id="tools"
-      class="section-block"
-      data-search-label="Tools"
-      data-search-keywords="tools military time chart clock conversion chat h-e-b chatbot partner assistant digital coupon dc transaction id helper reference"
-    >
+    <section id="tools" class="section-block">
       <div class="section-header">
         <div class="section-pill">
           <span class="material-symbols-outlined" aria-hidden="true">build</span>
@@ -242,13 +217,7 @@
       </div>
     </section>
 
-    <!-- Search notes: Communication - phone numbers, contacts, feedback forms, favor and DoorDash support. -->
-    <section
-      id="communication"
-      class="section-block"
-      data-search-label="Communication"
-      data-search-keywords="communication contacts phone numbers ecomm support credit card debit card favor support doordash merchant support feedback forms"
-    >
+    <section id="communication" class="section-block">
       <div class="section-header">
         <div class="section-pill support">
           <span class="material-symbols-outlined" aria-hidden="true">communication</span>
@@ -351,13 +320,7 @@
       </div>
     </section>
 
-    <!-- Search notes: Tips - curbside/delivery tips, DC steps, store reminders, Salesforce, Zscaler, Level 2 prep. -->
-    <section
-      id="tips"
-      class="section-block"
-      data-search-label="Tips"
-      data-search-keywords="tips curbside delivery 3psd store reminders digital coupons dc steps salesforce customer id level 2 prep zscaler order history"
-    >
+    <section id="tips" class="section-block">
       <div class="section-header">
         <div class="section-pill tips">
           <span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
