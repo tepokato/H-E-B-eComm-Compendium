@@ -1184,6 +1184,25 @@ footer {
   color: var(--text);
 }
 
+body.theme-dark .card-title,
+body.theme-dark .feedback-note {
+  background: rgba(248, 113, 113, 0.16);
+  box-shadow: 0 6px 16px rgba(248, 113, 113, 0.18);
+}
+
+body.theme-dark .time-military {
+  background: rgba(34, 197, 94, 0.16);
+  color: #86efac;
+  border-color: rgba(34, 197, 94, 0.4);
+  box-shadow: inset 0 0 0 1px rgba(34, 197, 94, 0.25);
+}
+
+body.theme-dark .tip-meta {
+  background: rgba(99, 102, 241, 0.18);
+  color: #c7d2fe;
+  border-color: rgba(165, 180, 252, 0.4);
+}
+
 .theme-dark header,
 .theme-dark .section-nav a,
 .theme-dark .card,
