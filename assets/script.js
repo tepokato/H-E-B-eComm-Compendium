@@ -266,7 +266,12 @@ function openWeeklyAdFromInput() {
     return;
   }
 
-  const selectedDate = new Date(`${rawValue}T00:00:00`);
+  const [rawYear, rawMonth, rawDay] = rawValue.split("-");
+  const selectedDate = new Date(
+    Number.parseInt(rawYear, 10),
+    Number.parseInt(rawMonth, 10) - 1,
+    Number.parseInt(rawDay, 10),
+  );
   if (Number.isNaN(selectedDate.getTime())) {
     setArchiveStatus("Please select a valid date.");
     return;
