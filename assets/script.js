@@ -10,7 +10,6 @@ const navLinks = document.querySelectorAll(".section-nav a[href^='#']");
 const themeToggleButton = document.getElementById("theme-toggle");
 const themeToggleText = themeToggleButton?.querySelector(".theme-text");
 const themeToggleIcon = themeToggleButton?.querySelector(".theme-icon");
-const visitCountEl = document.getElementById("visit-count");
 const archiveDateInput = document.getElementById("archive-date");
 const archiveOpenButton = document.getElementById("archive-open");
 const archiveStatus = document.getElementById("archive-status");
@@ -83,36 +82,6 @@ if (prefersDark?.addEventListener) {
   prefersDark.addListener(syncThemeWithPreference);
 }
 
-async function updateVisitCounter() {
-  if (!visitCountEl) return;
-  const storageKey = "visitCount";
-  const ipStorageKey = "visitCountIp";
-  const storedCount = Number.parseInt(localStorage.getItem(storageKey) ?? "0", 10);
-  const safeStoredCount = Number.isNaN(storedCount) ? 0 : storedCount;
-
-  visitCountEl.textContent = safeStoredCount.toLocaleString("en-US");
-
-  try {
-    const response = await fetch("https://api.ipify.org?format=json");
-    if (!response.ok) return;
-    const data = await response.json();
-    const currentIp = typeof data?.ip === "string" ? data.ip : null;
-    if (!currentIp) return;
-
-    const lastIp = localStorage.getItem(ipStorageKey);
-    if (lastIp === currentIp) {
-      visitCountEl.textContent = safeStoredCount.toLocaleString("en-US");
-      return;
-    }
-
-    const nextCount = safeStoredCount + 1;
-    localStorage.setItem(storageKey, String(nextCount));
-    localStorage.setItem(ipStorageKey, currentIp);
-    visitCountEl.textContent = nextCount.toLocaleString("en-US");
-  } catch (error) {
-    console.error("Unable to update visit counter", error);
-  }
-}
 
 // Shared date/time formatter pieces to avoid recreating Intl instances for each
 // tick of the clock.
@@ -146,7 +115,6 @@ function updateClocks() {
 
 updateClocks();
 setInterval(updateClocks, 30000);
-updateVisitCounter();
 
 // Show the back-to-top button only when scrolling past the hero content so it
 // remains out of the way near the top of the page.
