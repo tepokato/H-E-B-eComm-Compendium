@@ -1160,7 +1160,8 @@ footer {
 body.theme-dark .card-title,
 body.theme-dark .feedback-note {
   background: rgba(248, 113, 113, 0.16);
-  box-shadow: 0 6px 16px rgba(248, 113, 113, 0.18);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  box-shadow: 0 3px 8px rgba(248, 113, 113, 0.16);
 }
 
 body.theme-dark .time-military {
@@ -1168,6 +1169,30 @@ body.theme-dark .time-military {
   color: #86efac;
   border-color: rgba(34, 197, 94, 0.4);
   box-shadow: inset 0 0 0 1px rgba(34, 197, 94, 0.25);
+}
+
+body.theme-dark .section-pill {
+  box-shadow: 0 3px 8px rgba(14, 165, 233, 0.18);
+}
+
+body.theme-dark .section-pill.support {
+  box-shadow: 0 3px 8px var(--pill-support-shadow);
+}
+
+body.theme-dark .section-pill.checklist {
+  box-shadow: 0 3px 8px var(--pill-checklist-shadow);
+}
+
+body.theme-dark .section-pill.tips {
+  box-shadow: 0 3px 8px var(--pill-tips-shadow);
+}
+
+body.theme-dark .section-pill.archive {
+  box-shadow: 0 3px 8px var(--pill-archive-shadow);
+}
+
+body.theme-dark .section-pill.digital {
+  box-shadow: 0 3px 8px var(--pill-digital-shadow);
 }
 
 body.theme-dark .tip-meta {
