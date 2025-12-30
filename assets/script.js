@@ -11,6 +11,9 @@ const themeToggleButton = document.getElementById("theme-toggle");
 const themeToggleText = themeToggleButton?.querySelector(".theme-text");
 const themeToggleIcon = themeToggleButton?.querySelector(".theme-icon");
 const visitCountEl = document.getElementById("visit-count");
+const archiveDateInput = document.getElementById("archive-date");
+const archiveOpenButton = document.getElementById("archive-open");
+const archiveStatus = document.getElementById("archive-status");
 const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)");
 const sectionTargets = Array.from(navLinks)
   .map((link) => {
@@ -230,6 +233,61 @@ if (themeToggleButton) {
       : "dark";
     applyTheme(nextTheme, true);
   });
+}
+
+const weeklyAdArchive = [
+  {
+    label: "Dec 25 - Dec 31",
+    url: "weekly%20ads/Dec%2025%20-%20Dec%2031.pdf",
+    start: { month: 11, day: 25 },
+    end: { month: 11, day: 31 },
+  },
+];
+
+function getWeeklyAdForDate(date) {
+  return weeklyAdArchive.find((ad) => {
+    const startDate = new Date(date.getFullYear(), ad.start.month, ad.start.day);
+    const endDate = new Date(date.getFullYear(), ad.end.month, ad.end.day);
+    return date >= startDate && date <= endDate;
+  });
+}
+
+function setArchiveStatus(message, isReady = false) {
+  if (!archiveStatus) return;
+  archiveStatus.textContent = message;
+  archiveStatus.classList.toggle("is-ready", isReady);
+}
+
+function openWeeklyAdFromInput() {
+  if (!archiveDateInput) return;
+  const rawValue = archiveDateInput.value;
+  if (!rawValue) {
+    setArchiveStatus("Pick a date to open a weekly ad.");
+    return;
+  }
+
+  const selectedDate = new Date(`${rawValue}T00:00:00`);
+  if (Number.isNaN(selectedDate.getTime())) {
+    setArchiveStatus("Please select a valid date.");
+    return;
+  }
+
+  const matchingAd = getWeeklyAdForDate(selectedDate);
+  if (!matchingAd) {
+    setArchiveStatus("No weekly ad on file for that date.");
+    return;
+  }
+
+  setArchiveStatus(`Opening ${matchingAd.label} weekly ad...`, true);
+  window.open(matchingAd.url, "_blank", "noopener");
+}
+
+if (archiveDateInput) {
+  archiveDateInput.addEventListener("change", openWeeklyAdFromInput);
+}
+
+if (archiveOpenButton) {
+  archiveOpenButton.addEventListener("click", openWeeklyAdFromInput);
 }
 
 // Keep the navigation chips in sync with the section currently in view. Prefer

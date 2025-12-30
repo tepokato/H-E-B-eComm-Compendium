@@ -32,6 +32,10 @@
   --pill-tips-color: #1d4ed8;
   --pill-tips-border: #dbeafe;
   --pill-tips-shadow: rgba(29, 78, 216, 0.12);
+  --pill-archive-bg: #ecfeff;
+  --pill-archive-color: #0f766e;
+  --pill-archive-border: #cffafe;
+  --pill-archive-shadow: rgba(15, 118, 110, 0.12);
   --pill-digital-bg: #fff1f2;
   --pill-digital-color: #be123c;
   --pill-digital-border: #fecdd3;
@@ -100,6 +104,10 @@ body.theme-dark {
   --pill-tips-color: #bfdbfe;
   --pill-tips-border: rgba(147, 197, 253, 0.45);
   --pill-tips-shadow: rgba(59, 130, 246, 0.22);
+  --pill-archive-bg: rgba(13, 148, 136, 0.2);
+  --pill-archive-color: #ccfbf1;
+  --pill-archive-border: rgba(94, 234, 212, 0.45);
+  --pill-archive-shadow: rgba(13, 148, 136, 0.25);
   --pill-digital-bg: rgba(248, 113, 113, 0.18);
   --pill-digital-color: #fecdd3;
   --pill-digital-border: rgba(252, 165, 165, 0.45);
@@ -412,6 +420,13 @@ main {
   box-shadow: 0 6px 14px var(--pill-tips-shadow);
 }
 
+.section-pill.archive {
+  background: var(--pill-archive-bg);
+  color: var(--pill-archive-color);
+  border-color: var(--pill-archive-border);
+  box-shadow: 0 6px 14px var(--pill-archive-shadow);
+}
+
 .hero-card {
   position: relative;
   border: 1.5px solid var(--border);
@@ -505,6 +520,66 @@ a {
   border-radius: 12px;
   margin: 0 0 12px;
   box-shadow: 0 6px 16px rgba(227, 18, 44, 0.12);
+}
+
+.archive-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.archive-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.archive-picker-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.archive-picker input[type="date"] {
+  appearance: none;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--surface);
+  min-width: 180px;
+}
+
+.archive-picker input[type="date"]:focus {
+  outline: 2px solid var(--accent-sky);
+  outline-offset: 2px;
+}
+
+.archive-status {
+  min-height: 20px;
+  margin: 0;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.archive-status.is-ready {
+  color: var(--accent-sky);
+}
+
+.archive-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.archive-list-title {
+  font-weight: 700;
+  color: var(--text);
 }
 
 .time-chart {
