@@ -48,6 +48,10 @@
       <span class="material-symbols-outlined" aria-hidden="true">communication</span>
       <span class="nav-label">Communication</span>
     </a>
+    <a href="#archive" aria-label="Archive">
+      <span class="material-symbols-outlined" aria-hidden="true">archive</span>
+      <span class="nav-label">Archive</span>
+    </a>
     <a href="#tips" aria-label="Tips">
       <span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
       <span class="nav-label">Tips</span>
@@ -318,6 +322,37 @@
           </article>
         </div>
       </div>
+    </section>
+
+    <section id="archive" class="section-block">
+      <div class="section-header">
+        <div class="section-pill archive">
+          <span class="material-symbols-outlined" aria-hidden="true">archive</span>
+          Archive
+        </div>
+      </div>
+      <article class="card archive-card">
+        <h2 class="card-title">Weekly ad archive</h2>
+        <p>Select a date to open the weekly ad PDF for that week.</p>
+        <div class="archive-picker">
+          <label for="archive-date">Choose a date</label>
+          <div class="archive-picker-controls">
+            <input type="date" id="archive-date" name="archive-date" />
+            <button class="chip-button" id="archive-open" type="button">Open weekly ad</button>
+          </div>
+        </div>
+        <p class="archive-status" id="archive-status" role="status" aria-live="polite"></p>
+        <div class="archive-list">
+          <span class="archive-list-title">Available weeks</span>
+          <ul class="stacked-list">
+            <li>
+              <a href="weekly%20ads/Dec%2025%20-%20Dec%2031.pdf" target="_blank" rel="noopener noreferrer">
+                Dec 25 - Dec 31
+              </a>
+            </li>
+          </ul>
+        </div>
+      </article>
     </section>
 
     <section id="tips" class="section-block">
