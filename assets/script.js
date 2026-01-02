@@ -303,7 +303,7 @@ function setArchiveStatus(message, isReady = false) {
   archiveStatus.classList.toggle("is-ready", isReady);
 }
 
-function openWeeklyAdFromInput() {
+function getSelectedWeeklyAd() {
   if (!archiveDateInput) return;
   const rawValue = archiveDateInput.value;
   if (!rawValue) {
@@ -328,12 +328,27 @@ function openWeeklyAdFromInput() {
     return;
   }
 
+  return matchingAd;
+}
+
+function updateArchiveStatusFromInput() {
+  const matchingAd = getSelectedWeeklyAd();
+  if (!matchingAd) return;
+  setArchiveStatus(`Weekly ad available: ${matchingAd.label}.`, true);
+}
+
+function openWeeklyAdFromInput() {
+  const matchingAd = getSelectedWeeklyAd();
+  if (!matchingAd) return;
   setArchiveStatus(`Opening ${matchingAd.label} weekly ad...`, true);
-  window.open(matchingAd.url, "_blank", "noopener");
+  const openedWindow = window.open(matchingAd.url, "_blank", "noopener");
+  if (!openedWindow) {
+    setArchiveStatus("Pop-up blocked. Please allow pop-ups to open the weekly ad.");
+  }
 }
 
 if (archiveDateInput) {
-  archiveDateInput.addEventListener("change", openWeeklyAdFromInput);
+  archiveDateInput.addEventListener("change", updateArchiveStatusFromInput);
 }
 
 if (archiveOpenButton) {
