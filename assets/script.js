@@ -158,6 +158,34 @@ function resetCopyButtonLabel(button) {
   }, 1200);
 }
 
+function fallbackCopyText(text) {
+  if (typeof document.execCommand !== "function") {
+    return false;
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.top = "-1000px";
+  textarea.style.left = "-1000px";
+  textarea.style.opacity = "0";
+
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+
+  let copied = false;
+  try {
+    copied = document.execCommand("copy");
+  } catch (error) {
+    console.error("Fallback copy failed", error);
+  }
+
+  document.body.removeChild(textarea);
+  return copied;
+}
+
 // Wire up copy-to-clipboard on every quick action button. Errors fall back to a
 // visible message so partners know to try again.
 copyButtons.forEach((button) => {
@@ -165,17 +193,49 @@ copyButtons.forEach((button) => {
     const text = button.getAttribute("data-copy");
     if (!text) return;
 
-    try {
-      await navigator.clipboard.writeText(text);
-      button.textContent = "Copied";
-      announceCopyStatus(`${text} copied to clipboard.`);
-      resetCopyButtonLabel(button);
-    } catch (error) {
-      console.error("Copy failed", error);
-      button.textContent = "Copy failed";
-      announceCopyStatus("Copy failed. Please try again.");
-      resetCopyButtonLabel(button);
+    const canUseClipboard =
+      typeof navigator.clipboard?.writeText === "function";
+    const canUseFallback = typeof document.execCommand === "function";
+
+    if (!canUseClipboard && !canUseFallback) {
+      button.textContent = "Copy unavailable";
+      announceCopyStatus(
+        "Copy unavailable. Please copy manually from the field."
+      );
+      return;
     }
+
+    let copied = false;
+    let usedFallback = false;
+
+    if (canUseClipboard) {
+      try {
+        await navigator.clipboard.writeText(text);
+        copied = true;
+      } catch (error) {
+        console.error("Copy failed", error);
+      }
+    }
+
+    if (!copied && canUseFallback) {
+      usedFallback = fallbackCopyText(text);
+      copied = usedFallback;
+    }
+
+    if (copied) {
+      button.textContent = "Copied";
+      announceCopyStatus(
+        usedFallback
+          ? "Copied using the fallback clipboard method."
+          : `${text} copied to clipboard.`
+      );
+      resetCopyButtonLabel(button);
+      return;
+    }
+
+    button.textContent = "Copy blocked";
+    announceCopyStatus("Copy blocked. Please copy manually.");
+    resetCopyButtonLabel(button);
   });
 });
 
