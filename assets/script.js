@@ -13,6 +13,7 @@ const themeToggleIcon = themeToggleButton?.querySelector(".theme-icon");
 const archiveDateInput = document.getElementById("archive-date");
 const archiveOpenButton = document.getElementById("archive-open");
 const archiveStatus = document.getElementById("archive-status");
+const archiveList = document.getElementById("archive-list");
 const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)");
 const sectionTargets = Array.from(navLinks)
   .map((link) => {
@@ -272,6 +273,22 @@ const weeklyAdArchive = [
   },
 ];
 
+function renderWeeklyAdArchive() {
+  if (!archiveList) return;
+  archiveList.innerHTML = "";
+
+  weeklyAdArchive.forEach((ad) => {
+    const listItem = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = ad.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = ad.label;
+    listItem.appendChild(link);
+    archiveList.appendChild(listItem);
+  });
+}
+
 function getWeeklyAdForDate(date) {
   return weeklyAdArchive.find((ad) => {
     const startDate = new Date(date.getFullYear(), ad.start.month, ad.start.day);
@@ -322,6 +339,8 @@ if (archiveDateInput) {
 if (archiveOpenButton) {
   archiveOpenButton.addEventListener("click", openWeeklyAdFromInput);
 }
+
+renderWeeklyAdArchive();
 
 // Keep the navigation chips in sync with the section currently in view. Prefer
 // IntersectionObserver and fall back to a scroll-based approach when needed.
