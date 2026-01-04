@@ -89,6 +89,15 @@ if (prefersDark?.addEventListener) {
 const timeOptions = { hour: "numeric", minute: "2-digit", hour12: true };
 const militaryTimeOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
 const dateOptions = { month: "2-digit", day: "2-digit", year: "numeric" };
+const dateTimeOptions = {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hour12: false,
+};
 
 const LOCALE = "en-US";
 const commonDateTimeOptions = { timeZone: "America/Chicago" };
@@ -104,14 +113,48 @@ const centralDateFormatter = new Intl.DateTimeFormat(LOCALE, {
   ...dateOptions,
   ...commonDateTimeOptions,
 });
+const centralDateTimeFormatter = new Intl.DateTimeFormat(LOCALE, {
+  ...dateTimeOptions,
+  ...commonDateTimeOptions,
+});
+
+function formatCentralDateTime(now) {
+  const parts = centralDateTimeFormatter.formatToParts(now);
+  const lookup = Object.fromEntries(
+    parts.filter((part) => part.type !== "literal").map((part) => [part.type, part.value]),
+  );
+  return `${lookup.year}-${lookup.month}-${lookup.day}T${lookup.hour}:${lookup.minute}:${lookup.second}`;
+}
+
+function formatCentralDate(now) {
+  const parts = centralDateFormatter.formatToParts(now);
+  const lookup = Object.fromEntries(
+    parts.filter((part) => part.type !== "literal").map((part) => [part.type, part.value]),
+  );
+  return `${lookup.year}-${lookup.month}-${lookup.day}`;
+}
+
+function formatCentralTime(now) {
+  const parts = centralDateTimeFormatter.formatToParts(now);
+  const lookup = Object.fromEntries(
+    parts.filter((part) => part.type !== "literal").map((part) => [part.type, part.value]),
+  );
+  return `${lookup.hour}:${lookup.minute}`;
+}
 
 // Refreshes the human-readable and military clocks plus the date display. The
 // interval runs every 30 seconds to keep the UI fresh without extra overhead.
 function updateClocks() {
   const now = new Date();
+  const centralDateTime = formatCentralDateTime(now);
+  const centralDate = formatCentralDate(now);
+  const centralTime = formatCentralTime(now);
   centralTimeEl.textContent = centralTimeFormatter.format(now);
+  centralTimeEl.setAttribute("datetime", centralDateTime);
   centralMilitaryTimeEl.textContent = centralMilitaryTimeFormatter.format(now);
+  centralMilitaryTimeEl.setAttribute("datetime", centralDateTime);
   currentDateEl.textContent = centralDateFormatter.format(now);
+  currentDateEl.setAttribute("datetime", centralDate);
 }
 
 updateClocks();
