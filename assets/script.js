@@ -266,10 +266,16 @@ if (themeToggleButton) {
 
 const weeklyAdArchive = [
   {
-    label: "Dec 25 - Dec 31",
-    url: "weekly%20ads/2025/Dec%2025%20-%20Dec%2031.pdf",
+    label: "Dec 25, 2025",
+    url: "weekly%20ads/12-25-25.pdf",
     start: { month: 11, day: 25 },
     end: { month: 11, day: 31 },
+  },
+  {
+    label: "Jan 1, 2026",
+    url: "weekly%20ads/01-01-26.pdf",
+    start: { month: 0, day: 1 },
+    end: { month: 0, day: 7 },
   },
 ];
 
