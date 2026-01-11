@@ -1036,10 +1036,22 @@
   <div class="footer-bar" aria-label="Page controls">
     <div class="footer-bar-inner">
       <a class="chip-button" href="under_construction.html">OAST partner site</a>
-      <button id="theme-toggle" class="chip-button theme-toggle" type="button" aria-pressed="false">
-        <span class="theme-icon material-symbols-outlined" aria-hidden="true">dark_mode</span>
-        <span class="theme-text">Dark mode</span>
-      </button>
+      <div class="footer-actions">
+        <div class="clockout-widget" aria-label="Clock-out countdown">
+          <div class="clockout-input-group">
+            <label class="clockout-label" for="clockin-time">Clocked in</label>
+            <input id="clockin-time" class="clockout-input" type="time" />
+          </div>
+          <div class="clockout-output">
+            <span class="clockout-time" id="clockout-time">--</span>
+            <span class="clockout-countdown" id="clockout-countdown" aria-live="polite">Add your clock-in time.</span>
+          </div>
+        </div>
+        <button id="theme-toggle" class="chip-button theme-toggle" type="button" aria-pressed="false">
+          <span class="theme-icon material-symbols-outlined" aria-hidden="true">dark_mode</span>
+          <span class="theme-text">Dark mode</span>
+        </button>
+      </div>
     </div>
   </div>
 
