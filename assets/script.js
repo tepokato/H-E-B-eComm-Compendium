@@ -14,6 +14,9 @@ const archiveDateInput = document.getElementById("archive-date");
 const archiveOpenButton = document.getElementById("archive-open");
 const archiveStatus = document.getElementById("archive-status");
 const archiveList = document.getElementById("archive-list");
+const clockInInput = document.getElementById("clockin-time");
+const clockOutTimeEl = document.getElementById("clockout-time");
+const clockOutCountdownEl = document.getElementById("clockout-countdown");
 const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)");
 const sectionTargets = Array.from(navLinks)
   .map((link) => {
@@ -118,6 +121,9 @@ const centralDateTimeFormatter = new Intl.DateTimeFormat(LOCALE, {
   ...commonDateTimeOptions,
 });
 
+const CLOCK_OUT_SHIFT_HOURS = 9;
+let clockOutTimerId = null;
+
 function formatCentralDateTime(now) {
   const parts = centralDateTimeFormatter.formatToParts(now);
   const lookup = Object.fromEntries(
@@ -140,6 +146,66 @@ function formatCentralTime(now) {
     parts.filter((part) => part.type !== "literal").map((part) => [part.type, part.value]),
   );
   return `${lookup.hour}:${lookup.minute}`;
+}
+
+function formatCountdown(totalSeconds) {
+  if (totalSeconds <= 0) {
+    return "Clock-out time reached.";
+  }
+
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+  return `${hours}h ${minutes}m ${seconds}s remaining`;
+}
+
+function parseClockInInput(value, now) {
+  if (!value) return null;
+  const [rawHours, rawMinutes] = value.split(":");
+  const hours = Number.parseInt(rawHours, 10);
+  const minutes = Number.parseInt(rawMinutes, 10);
+  if (Number.isNaN(hours) || Number.isNaN(minutes)) return null;
+
+  const clockIn = new Date(now);
+  clockIn.setHours(hours, minutes, 0, 0);
+  return clockIn;
+}
+
+function updateClockOutCountdown() {
+  if (!clockInInput || !clockOutTimeEl || !clockOutCountdownEl) return;
+  const now = new Date();
+  const clockIn = parseClockInInput(clockInInput.value, now);
+
+  if (!clockIn) {
+    clockOutTimeEl.textContent = "--";
+    clockOutCountdownEl.textContent = "Add your clock-in time.";
+    clockOutTimeEl.removeAttribute("datetime");
+    return;
+  }
+
+  const clockOut = new Date(clockIn);
+  clockOut.setHours(clockOut.getHours() + CLOCK_OUT_SHIFT_HOURS);
+
+  if (clockOut <= now) {
+    clockOut.setDate(clockOut.getDate() + 1);
+  }
+
+  clockOutTimeEl.textContent = centralTimeFormatter.format(clockOut);
+  clockOutTimeEl.setAttribute("datetime", formatCentralDateTime(clockOut));
+
+  const secondsRemaining = Math.max(
+    0,
+    Math.floor((clockOut.getTime() - now.getTime()) / 1000),
+  );
+  clockOutCountdownEl.textContent = formatCountdown(secondsRemaining);
+}
+
+function startClockOutCountdown() {
+  if (clockOutTimerId) {
+    clearInterval(clockOutTimerId);
+  }
+  updateClockOutCountdown();
+  clockOutTimerId = window.setInterval(updateClockOutCountdown, 1000);
 }
 
 // Refreshes the human-readable and military clocks plus the date display. The
@@ -305,6 +371,15 @@ if (themeToggleButton) {
       : "dark";
     applyTheme(nextTheme, true);
   });
+}
+
+if (clockInInput) {
+  clockInInput.addEventListener("input", startClockOutCountdown);
+  clockInInput.addEventListener("change", startClockOutCountdown);
+}
+
+if (clockInInput && clockOutTimeEl && clockOutCountdownEl) {
+  startClockOutCountdown();
 }
 
 const weeklyAdArchive = [

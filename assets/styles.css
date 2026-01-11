@@ -957,6 +957,14 @@ a {
   flex-wrap: wrap;
 }
 
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .footer-bar .chip-button {
   padding: 6px 10px;
   font-size: 14px;
@@ -965,6 +973,63 @@ a {
 .footer-bar .theme-toggle {
   gap: 4px;
   padding: 6px 10px;
+}
+
+.clockout-widget {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+}
+
+.clockout-input-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.clockout-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.clockout-input {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px 8px;
+  font-size: 13px;
+  background: var(--card);
+  color: var(--text);
+}
+
+.clockout-input:focus-visible {
+  outline: 2px solid var(--accent-sky);
+  outline-offset: 2px;
+}
+
+.clockout-output {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.clockout-time {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.clockout-countdown {
+  font-size: 12px;
+  color: var(--muted);
 }
 
 footer {
