@@ -621,6 +621,91 @@ a {
   color: var(--muted);
 }
 
+.store-chart {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 8px 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.store-chart[open] {
+  border-color: #d1d5db;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.store-chart-title {
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.store-chart-title::-webkit-details-marker {
+  display: none;
+}
+
+.store-chart-title::after {
+  content: "expand_more";
+  font-family: "Material Symbols Outlined";
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  color: var(--muted);
+  margin-left: auto;
+  transition: transform 0.12s ease;
+}
+
+.store-chart[open] .store-chart-title::after {
+  transform: rotate(180deg);
+}
+
+.store-chart-body {
+  margin-top: 10px;
+}
+
+.store-chart-table {
+  max-height: 420px;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+}
+
+.store-chart-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.store-chart-table th,
+.store-chart-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.store-chart-table th {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(180deg, var(--accent-sky-light), var(--accent-sky-contrast));
+  color: var(--accent-sky);
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.store-chart-table tbody tr:nth-child(even) {
+  background: var(--surface);
+}
+
+.store-chart-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
 .time-chart {
   display: flex;
   flex-direction: column;
