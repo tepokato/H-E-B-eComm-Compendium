@@ -639,12 +639,16 @@ a {
 
 .store-chart-title {
   font-weight: 700;
-  color: var(--text);
+  color: var(--heb-red);
   cursor: pointer;
   list-style: none;
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 6px 10px;
+  background: #fdf2f2;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(227, 18, 44, 0.12);
 }
 
 .store-chart-title::-webkit-details-marker {
@@ -1252,7 +1256,8 @@ footer {
 }
 
 body.theme-dark .card-title,
-body.theme-dark .feedback-note {
+body.theme-dark .feedback-note,
+body.theme-dark .store-chart-title {
   background: rgba(248, 113, 113, 0.16);
   box-shadow: 0 6px 16px rgba(248, 113, 113, 0.18);
 }
