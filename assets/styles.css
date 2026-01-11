@@ -672,22 +672,6 @@ a {
   margin-top: 10px;
 }
 
-.store-chart-figure {
-  margin: 0 0 12px;
-  padding: 12px;
-  border-radius: 12px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  display: flex;
-  justify-content: center;
-}
-
-.store-chart-figure img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
 .store-chart-table {
   max-height: 420px;
   overflow: auto;
