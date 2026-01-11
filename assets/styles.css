@@ -21,6 +21,7 @@
   --accent-sky-strong: #d1d5db;
   --accent-sky-border: #bae6fd;
   --accent-sky-header: #e0f2fe;
+  --store-chart-icon-filter: brightness(0) saturate(100%) invert(23%) sepia(78%) saturate(4471%) hue-rotate(343deg) brightness(92%) contrast(104%);
   --pill-support-bg: #fdf4ff;
   --pill-support-color: #9333ea;
   --pill-support-border: #f5d0fe;
@@ -94,6 +95,7 @@ body.theme-dark {
   --accent-sky-strong: #94a3b8;
   --accent-sky-border: rgba(103, 232, 249, 0.6);
   --accent-sky-header: #0b2f4a;
+  --store-chart-icon-filter: brightness(0) saturate(100%) invert(83%) sepia(21%) saturate(4334%) hue-rotate(302deg) brightness(95%) contrast(101%);
   --pill-support-bg: rgba(147, 51, 234, 0.18);
   --pill-support-color: #e9d5ff;
   --pill-support-border: rgba(221, 214, 254, 0.45);
@@ -676,6 +678,7 @@ a {
   width: 1.1em;
   height: 1.1em;
   object-fit: contain;
+  filter: var(--store-chart-icon-filter);
 }
 
 .store-chart-table {
