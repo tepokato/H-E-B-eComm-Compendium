@@ -20,6 +20,7 @@
   --accent-sky-contrast: #f8fafc;
   --accent-sky-strong: #d1d5db;
   --accent-sky-border: #bae6fd;
+  --accent-sky-header: #e0f2fe;
   --pill-support-bg: #fdf4ff;
   --pill-support-color: #9333ea;
   --pill-support-border: #f5d0fe;
@@ -92,6 +93,7 @@ body.theme-dark {
   --accent-sky-contrast: rgba(248, 250, 252, 0.08);
   --accent-sky-strong: #94a3b8;
   --accent-sky-border: rgba(103, 232, 249, 0.6);
+  --accent-sky-header: #0b2f4a;
   --pill-support-bg: rgba(147, 51, 234, 0.18);
   --pill-support-color: #e9d5ff;
   --pill-support-border: rgba(221, 214, 254, 0.45);
@@ -690,7 +692,7 @@ a {
 .store-chart-table th {
   position: sticky;
   top: 0;
-  background: linear-gradient(180deg, var(--accent-sky-light), var(--accent-sky-contrast));
+  background: var(--accent-sky-header);
   color: var(--accent-sky);
   font-size: 11px;
   letter-spacing: 0.4px;
