@@ -672,6 +672,12 @@ a {
   margin-top: 10px;
 }
 
+.store-chart-icon {
+  width: 1.1em;
+  height: 1.1em;
+  object-fit: contain;
+}
+
 .store-chart-table {
   max-height: 420px;
   overflow: auto;
